@@ -1,0 +1,70 @@
+{
+  "id": "low_inventory_fee_us_2026",
+  "name": "Low inventory level fee",
+  "marketplace": "US",
+  "product_scope": "automotive_parts",
+  "source_file": "assets/low_inventory_fee.html",
+  "effective_from": "2026-01-15",
+  "inputs": [
+    { "field": "size_tier", "type": "select", "values": ["small_standard_size", "large_standard_size", "small_bulky", "large_bulky"] },
+    { "field": "product_weight_lb", "type": "number" },
+    { "field": "shipping_weight_lb", "type": "number" },
+    { "field": "long_term_historical_days_of_supply_90_days", "type": "number" },
+    { "field": "short_term_historical_days_of_supply_30_days", "type": "number" },
+    { "field": "units_sold_last_7_days", "type": "number" },
+    { "field": "is_new_professional_seller_365_day_exempt", "type": "boolean" },
+    { "field": "is_new_fba_parent_product_180_day_exempt", "type": "boolean" },
+    { "field": "is_agl_auto_replenished_70_percent_plus", "type": "boolean" }
+  ],
+  "eligibility": {
+    "applies_when": [
+      "long_term_historical_days_of_supply_90_days < 28",
+      "short_term_historical_days_of_supply_30_days < 28",
+      "size_tier is standard size, small bulky, or large bulky",
+      "not exempt"
+    ],
+    "fee_band_days": "max(long_term_historical_days_of_supply_90_days, short_term_historical_days_of_supply_30_days)",
+    "exemptions": [
+      "new professional seller within 365 days of first inventory receipt",
+      "new FBA parent product within 180 days of first inventory receipt when enrolled in New Selection Program",
+      "SKU with 70% or more inventory auto-replenished through Amazon Warehousing and Distribution in the past 90 days",
+      "product sold fewer than 20 units in the past 7 days",
+      "food category"
+    ]
+  },
+  "weight_basis": {
+    "small_standard_size": "product_weight_lb",
+    "large_standard_size": "greater of product weight and dimensional weight",
+    "small_bulky": "shipping_weight_lb",
+    "large_bulky": "shipping_weight_lb"
+  },
+  "rates": {
+    "days_0_to_14": {
+      "small_standard_size_up_to_16_oz": 0.89,
+      "large_standard_size_up_to_3_lb": 0.97,
+      "large_standard_size_3_to_20_lb": 1.11,
+      "small_bulky_up_to_50_lb": 1.85,
+      "large_bulky_up_to_50_lb": 2.09
+    },
+    "days_14_to_21": {
+      "small_standard_size_up_to_16_oz": 0.63,
+      "large_standard_size_up_to_3_lb": 0.70,
+      "large_standard_size_3_to_20_lb": 0.87,
+      "small_bulky_up_to_50_lb": 1.02,
+      "large_bulky_up_to_50_lb": 1.15
+    },
+    "days_21_to_28": {
+      "small_standard_size_up_to_16_oz": 0.32,
+      "large_standard_size_up_to_3_lb": 0.36,
+      "large_standard_size_3_to_20_lb": 0.47,
+      "small_bulky_up_to_50_lb": 0.51,
+      "large_bulky_up_to_50_lb": 0.57
+    }
+  },
+  "notes": [
+    "Charged per fulfilled unit and added to FBA fulfillment fees.",
+    "The fee applies only when both long-term and short-term historical days of supply are below 28 days.",
+    "The fee band is determined by the greater of long-term and short-term historical days of supply.",
+    "Automotive parts are not food category, so the food exemption is not modeled in the calculator."
+  ]
+}

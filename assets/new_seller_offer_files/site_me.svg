@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_2" data-name="图层 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 72 72">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-2, .cls-3 {
+        stroke-width: 0px;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #161d26;
+      }
+
+      .cls-4 {
+        stroke: #161d26;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" width="72" height="72"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1" data-name="Layer 1">
+    <g class="cls-1">
+      <g>
+        <rect class="cls-3" x="46.13" y="3.92" width="3" height="60.81" rx="1" ry="1"/>
+        <rect class="cls-3" x="13.27" y="63" width="42.53" height="3" rx="1" ry="1"/>
+        <path class="cls-4" d="M46.51,12.09h-5.31s-17.77,18.53-18.78,51.81"/>
+        <line class="cls-4" x1="47.63" y1="21.86" x2="34.22" y2="21.86"/>
+        <path class="cls-4" d="M42.55,58.01h-13.27c2.55-23.01,9.42-29.58,9.42-29.58h3.86l-.02,29.58Z"/>
+        <line class="cls-4" x1="35.4" y1="35.01" x2="42.39" y2="35.01"/>
+        <line class="cls-4" x1="32.55" y1="43.22" x2="42.56" y2="43.22"/>
+        <line class="cls-4" x1="31.21" y1="51.44" x2="42.56" y2="51.44"/>
+      </g>
+    </g>
+  </g>
+</svg>

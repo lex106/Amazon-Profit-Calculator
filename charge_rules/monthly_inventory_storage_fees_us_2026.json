@@ -1,0 +1,81 @@
+{
+  "id": "monthly_inventory_storage_fees_us_2026",
+  "name": "Monthly inventory storage fees",
+  "marketplace": "US",
+  "product_scope": "automotive_parts",
+  "source_file": "assets/monthly_inventory_storage_fees.html",
+  "inputs": [
+    { "field": "current_month", "type": "select", "values": ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"] },
+    { "field": "size_tier", "type": "select", "values": ["standard_size", "oversize"] },
+    { "field": "is_dangerous_goods", "type": "boolean" },
+    { "field": "average_daily_units", "type": "number" },
+    { "field": "volume_per_unit_cuft", "type": "number" },
+    { "field": "storage_utilization_ratio_weeks", "type": "number" },
+    { "field": "average_daily_volume_cuft", "type": "number" },
+    { "field": "average_daily_shipped_volume_cuft", "type": "number" },
+    { "field": "is_new_seller", "type": "boolean" },
+    { "field": "is_individual_seller", "type": "boolean" }
+  ],
+  "calculation": {
+    "base_fee_formula": "average_daily_units * volume_per_unit_cuft * base_rate",
+    "surcharge_formula": "eligible_aged_units_above_30_days * volume_per_unit_cuft * surcharge_rate",
+    "surcharge_eligibility": [
+      "average_daily_inventory_volume >= 25 cubic feet",
+      "storage_utilization_ratio > 22 weeks",
+      "applies only to inventory aged above 30 days"
+    ],
+    "storage_utilization_ratio_formula": "(daily_inventory_volume over 13 weeks / daily_shipped_volume over 13 weeks) / 7"
+  },
+  "rates": {
+    "non_dangerous_off_peak": {
+      "standard_size": {
+        "below_22_weeks": { "base": 0.78, "surcharge": null },
+        "22_28_weeks": { "base": 0.78, "surcharge": 0.44 },
+        "28_36_weeks": { "base": 0.78, "surcharge": 0.76 },
+        "36_44_weeks": { "base": 0.78, "surcharge": 1.16 },
+        "44_52_weeks": { "base": 0.78, "surcharge": 1.58 },
+        "52_plus_weeks": { "base": 0.78, "surcharge": 1.88 },
+        "new_seller_or_individual_or_low_volume": { "base": 0.78, "surcharge": null }
+      },
+      "oversize": {
+        "below_22_weeks": { "base": 0.56, "surcharge": null },
+        "22_28_weeks": { "base": 0.56, "surcharge": 0.23 },
+        "28_36_weeks": { "base": 0.56, "surcharge": 0.46 },
+        "36_44_weeks": { "base": 0.56, "surcharge": 0.63 },
+        "44_52_weeks": { "base": 0.56, "surcharge": 0.76 },
+        "52_plus_weeks": { "base": 0.56, "surcharge": 1.26 },
+        "new_seller_or_individual_or_low_volume": { "base": 0.56, "surcharge": null }
+      }
+    },
+    "non_dangerous_peak": {
+      "standard_size": {
+        "below_22_weeks": { "base": 2.40, "surcharge": null },
+        "22_28_weeks": { "base": 2.40, "surcharge": 0.44 },
+        "28_36_weeks": { "base": 2.40, "surcharge": 0.76 },
+        "36_44_weeks": { "base": 2.40, "surcharge": 1.16 },
+        "44_52_weeks": { "base": 2.40, "surcharge": 1.58 },
+        "52_plus_weeks": { "base": 2.40, "surcharge": 1.88 },
+        "new_seller_or_individual_or_low_volume": { "base": 2.40, "surcharge": null }
+      },
+      "oversize": {
+        "below_22_weeks": { "base": 1.40, "surcharge": null },
+        "22_28_weeks": { "base": 1.40, "surcharge": 0.23 },
+        "28_36_weeks": { "base": 1.40, "surcharge": 0.46 },
+        "36_44_weeks": { "base": 1.40, "surcharge": 0.63 },
+        "44_52_weeks": { "base": 1.40, "surcharge": 0.76 },
+        "52_plus_weeks": { "base": 1.40, "surcharge": 1.26 },
+        "new_seller_or_individual_or_low_volume": { "base": 1.40, "surcharge": null }
+      }
+    },
+    "dangerous_goods": {
+      "jan_sep": { "standard_size": 0.99, "oversize": 0.78 },
+      "oct_dec": { "standard_size": 3.63, "oversize": 2.43 }
+    }
+  },
+  "notes": [
+    "Monthly storage fees are based on the packaged unit volume.",
+    "Dangerous goods pricing is separate.",
+    "Only automotive-relevant product setup is kept here."
+  ]
+}
+

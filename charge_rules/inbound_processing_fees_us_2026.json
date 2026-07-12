@@ -1,0 +1,84 @@
+{
+  "id": "inbound_processing_fees_us_2026",
+  "name": "FBA inbound placement service fees",
+  "marketplace": "US",
+  "product_scope": "automotive_parts",
+  "source_file": "assets/Inbound_processing_fees.html",
+  "inputs": [
+    { "field": "size_tier", "type": "select", "values": ["small_standard_size", "large_standard_size", "small_bulky", "large_bulky"] },
+    { "field": "shipment_weight_lb", "type": "number" },
+    { "field": "placement_mode", "type": "select", "values": ["single_location", "partial_split", "optimized_split"] },
+    { "field": "location_count", "type": "number" },
+    { "field": "destination_region", "type": "select", "values": ["east", "west", "other"] },
+    { "field": "case_count", "type": "number" },
+    { "field": "same_items_per_case", "type": "boolean" },
+    { "field": "same_mix_per_case", "type": "boolean" }
+  ],
+  "rules": {
+    "standard_size_before_2026_01_15": {
+      "small_standard_size": {
+        "up_to_16_oz": [0.16, 0.30]
+      },
+      "large_standard_size": {
+        "up_to_12_oz": [0.18, 0.34],
+        "12_oz_to_1_5_lb": [0.22, 0.41],
+        "1_5_lb_to_3_lb": [0.27, 0.49],
+        "3_lb_to_20_lb": [0.37, 0.68]
+      }
+    },
+    "standard_size_from_2026_01_15": {
+      "small_standard_size": {
+        "up_to_8_oz": [0.14, 0.32],
+        "8_oz_to_16_oz": [0.16, 0.32]
+      },
+      "large_standard_size": {
+        "up_to_12_oz": [0.20, 0.40],
+        "12_oz_to_1_5_lb": [0.24, 0.50],
+        "1_5_lb_to_3_lb": [0.34, 0.60],
+        "3_lb_to_5_lb": [0.38, 0.76],
+        "5_lb_to_7_lb": [0.40, 0.98],
+        "7_lb_to_10_lb": [0.42, 1.20],
+        "10_lb_to_15_lb": [0.44, 1.50],
+        "15_lb_to_20_lb": [0.55, 1.90]
+      }
+    },
+    "large_bulky_before_2026_01_15": {
+      "large_bulky": {
+        "up_to_5_lb_single_location": [1.10, 1.60],
+        "up_to_5_lb_partial_split": [0.55, 1.10],
+        "5_lb_to_12_lb_single_location": [1.75, 2.40],
+        "5_lb_to_12_lb_partial_split": [0.65, 1.75],
+        "12_lb_to_28_lb_single_location": [2.74, 3.50],
+        "12_lb_to_28_lb_partial_split": [0.81, 2.19],
+        "28_lb_to_42_lb_single_location": [3.95, 4.95],
+        "28_lb_to_42_lb_partial_split": [1.05, 2.83],
+        "42_lb_to_50_lb_single_location": [4.80, 5.95],
+        "42_lb_to_50_lb_partial_split": [1.23, 3.32]
+      }
+    },
+    "large_bulky_from_2026_01_15": {
+      "small_bulky": {
+        "up_to_5_lb_single_location": [1.10, 1.60],
+        "up_to_5_lb_partial_split": [0.55, 1.10]
+      },
+      "large_bulky": {
+        "up_to_5_lb_single_location": [1.30, 1.80],
+        "up_to_5_lb_partial_split": [0.55, 1.25],
+        "5_lb_to_12_lb_single_location": [2.10, 2.90],
+        "5_lb_to_12_lb_partial_split": [0.65, 1.80],
+        "12_lb_to_28_lb_single_location": [3.40, 4.10],
+        "12_lb_to_28_lb_partial_split": [0.81, 2.30],
+        "28_lb_to_42_lb_single_location": [4.70, 5.60],
+        "28_lb_to_42_lb_partial_split": [1.05, 2.95],
+        "42_lb_to_50_lb_single_location": [5.50, 6.50],
+        "42_lb_to_50_lb_partial_split": [1.23, 3.50]
+      }
+    }
+  },
+  "notes": [
+    "Automated split is free when the plan qualifies.",
+    "For automotive parts, keep the non-clothing size tiers only.",
+    "The rate files capture the core placement rules and the plan-eligibility gate."
+  ]
+}
+

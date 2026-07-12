@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>汽车零配件 Amazon US 费用计算器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-title" id="pageBadge">费用计算器</span>
+        <span class="divider"></span>
+        <span class="brand-subtitle">AUTO PARTS PRIME</span>
+      </div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="展开导航">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav" id="siteNav" aria-label="工具导航">
+        <button class="nav-link is-active" type="button" data-view="fees">费用计算器</button>
+        <button class="nav-link" type="button" data-view="profit">利润计算器</button>
+        <button class="nav-link" type="button" data-view="guide">使用说明</button>
+        <span class="note-logo">US Only</span>
+      </nav>
+    </header>
+
+    <main>
+      <section class="view is-active" id="feesView" aria-labelledby="feesTitle">
+        <aside class="side-panel">
+          <div class="section-label">US Fees</div>
+          <h1 id="feesTitle">费用计算器</h1>
+          <p class="muted">美国站汽车零配件，汇总 FBA 运费、仓储、入库、退货、移除和弃置费用</p>
+
+          <form class="field-grid" id="feeForm">
+            <label>
+              <span>包装后长度 cm</span>
+              <input id="lengthCm" type="number" min="0" step="0.01" value="28" />
+            </label>
+            <label>
+              <span>包装后宽度 cm</span>
+              <input id="widthCm" type="number" min="0" step="0.01" value="20" />
+            </label>
+            <label>
+              <span>包装后高度 cm</span>
+              <input id="heightCm" type="number" min="0" step="0.01" value="15" />
+            </label>
+            <label>
+              <span>包装后重量 kg</span>
+              <input id="weightKg" type="number" min="0" step="0.01" value="2.5" />
+            </label>
+            <label class="wide">
+              <span>美国售价 $</span>
+              <input id="salePrice" type="number" min="0" step="0.01" value="59.99" />
+            </label>
+            <label>
+              <span>配送季节</span>
+              <select id="season">
+                <option value="nonPeak">非旺季</option>
+                <option value="peak">旺季 2026-10-15 至 2027-01-14</option>
+              </select>
+            </label>
+            <label class="wide">
+              <span>入库方案 / 发往地点数</span>
+              <select id="inboundPlan">
+                <option value="single">单点入仓 / 1 个地点</option>
+                <option value="partial">部分货件拆分 / 2-3 个地点</option>
+                <option value="optimized">亚马逊优化拆分 / 5 个或更多地点</option>
+              </select>
+            </label>
+            <details class="advanced-options wide">
+              <summary>其他潜在费用</summary>
+              <label class="check wide">
+                <input id="agedInventoryFeeEnabled" type="checkbox" />
+                <span>超龄仓储费</span>
+              </label>
+              <label class="check wide">
+                <input id="returnProcessingFeeEnabled" type="checkbox" />
+                <span>退货处理费</span>
+              </label>
+              <label class="check wide">
+                <input id="removalFeeEnabled" type="checkbox" />
+                <span>货物移除费</span>
+              </label>
+              <label class="check wide">
+                <input id="disposalFeeEnabled" type="checkbox" />
+                <span>货物弃置费</span>
+              </label>
+              <label class="check wide">
+                <input id="lowInventoryFeeEnabled" type="checkbox" />
+                <span>低库存水平费</span>
+              </label>
+              <div class="field-grid wide is-hidden" id="lowInventoryFields">
+                <label class="wide">
+                  <span>长期历史供货天数（过去 90 天）</span>
+                  <input id="lowInventoryLongDays" type="number" min="0" step="1" value="24" />
+                </label>
+                <label class="wide">
+                  <span>短期历史供货天数（过去 30 天）</span>
+                  <input id="lowInventoryShortDays" type="number" min="0" step="1" value="20" />
+                </label>
+                <label class="wide">
+                  <span>过去 7 天销量</span>
+                  <input id="lowInventoryUnits7d" type="number" min="0" step="1" value="30" />
+                </label>
+                <label class="check wide">
+                  <input id="lowInventoryNewSellerExempt" type="checkbox" />
+                  <span>新卖家 365 天豁免</span>
+                </label>
+                <label class="check wide">
+                  <input id="lowInventoryAglExempt" type="checkbox" />
+                  <span>AGL 自动补货 ≥70%</span>
+                </label>
+              </div>
+            </details>
+            <details class="advanced-options wide">
+              <summary>高级选项</summary>
+              <label class="check wide">
+                <input id="fuelSurcharge" type="checkbox" checked />
+                <span>包含 3.5% 燃油和物流附加费</span>
+              </label>
+              <label class="check wide">
+                <input id="sippCertified" type="checkbox" />
+                <span>SIPP 自有包装认证</span>
+              </label>
+              <label class="check wide">
+                <input id="newSelectionBenefit" type="checkbox" />
+                <span>是否新品入仓优惠</span>
+              </label>
+            </details>
+          </form>
+        </aside>
+
+        <section class="content-panel">
+          <div class="summary-strip">
+            <div>
+              <p>当前输入</p>
+              <h2 id="feeStatus">待计算</h2>
+            </div>
+            <div class="metric">
+              <span>体积重</span>
+              <strong id="dimWeight">0.00 kg</strong>
+            </div>
+            <div class="metric">
+              <span>发货重量</span>
+              <strong id="shippingWeight">0.00 kg</strong>
+            </div>
+            <div class="metric">
+              <span>价格档</span>
+              <strong id="priceBand">-</strong>
+            </div>
+          </div>
+
+          <article class="result-card hero-result">
+            <div class="chip">US</div>
+            <div>
+              <h2>美国</h2>
+              <p id="feeSubtitle">普通商品 / -</p>
+            </div>
+            <strong class="big-money" id="feeTotal">$0.00</strong>
+            <div class="mini-grid">
+              <span>尺寸分段</span><strong id="sizeTier">-</strong>
+              <span>基础配送费</span><strong id="baseFee">$0.00</strong>
+              <span>燃油物流附加费</span><strong id="fuelFee">$0.00</strong>
+              <span>SIPP调整</span><strong id="sippFee">$0.00</strong>
+            </div>
+          </article>
+
+          <article class="breakdown-card fee-overview">
+            <div class="breakdown-title">
+              <div>
+                <p>Fee Summary</p>
+                <h2>费用总览</h2>
+              </div>
+              <span>$ 美元</span>
+            </div>
+            <div id="feeRows" class="breakdown-rows"></div>
+          </article>
+
+          <section class="diagnostic-band">
+            <div class="section-label">包装诊断</div>
+            <h2>降费机会</h2>
+            <p id="feeAdvice">输入尺寸和重量后，会提示是否接近降档边界。</p>
+          </section>
+        </section>
+      </section>
+
+      <section class="view" id="profitView" aria-labelledby="profitTitle">
+        <aside class="side-panel">
+          <div class="section-label">选择国家</div>
+          <div class="market-tabs" aria-label="选择国家">
+            <button class="market-tab is-active" type="button">US</button>
+          </div>
+
+          <form class="field-grid" id="profitForm">
+            <label class="wide">
+              <span>佣金类目</span>
+              <select id="referralCategory">
+                <option value="automotive">汽车和户外动力设备 12%</option>
+                <option value="tires">轮胎 10%</option>
+                <option value="other">其他 15%</option>
+              </select>
+            </label>
+            <label class="wide">
+              <span>产品成本 ¥</span>
+              <input id="productCostCny" type="number" min="0" step="0.01" value="65" />
+            </label>
+            <label class="wide">
+              <span>头程费用 ¥/kg</span>
+              <input id="firstLegCostPerKgCny" type="number" min="0" step="0.01" value="12" />
+            </label>
+            <label class="wide">
+              <span>广告费率 %</span>
+              <input id="advertisingRate" type="number" min="0" step="0.01" value="8" />
+            </label>
+            <label class="wide">
+              <span>售价 $</span>
+              <input id="profitSalePrice" type="number" min="0" step="0.01" value="59.99" />
+            </label>
+            <label class="wide">
+              <span>亚马逊配送费 $</span>
+              <input id="profitFulfillmentFee" type="number" min="0" step="0.01" value="0" />
+            </label>
+            <label class="wide">
+              <span>美元汇率 CNY/USD</span>
+              <input id="exchangeRate" type="number" min="0" step="0.0001" value="7.18" />
+            </label>
+            <button class="secondary-action wide" id="refreshExchangeRate" type="button">更新实时汇率</button>
+            <small class="wide" id="exchangeRateStatus">默认手动汇率，打开页面后会尝试自动更新。</small>
+            <label class="wide">
+              <span>月销量</span>
+              <input id="monthlySales" type="number" min="0" step="1" value="300" />
+            </label>
+            <label class="wide">
+              <span>退货率 %</span>
+              <input id="manualReturnRate" type="number" min="0" step="0.01" value="6" />
+            </label>
+            <label class="check wide">
+              <input id="syncFee" type="checkbox" checked />
+              <span>自动使用配送费计算结果</span>
+            </label>
+          </form>
+        </aside>
+
+        <section class="content-panel">
+          <div class="profit-heading">
+            <p>Amazon Product Profit</p>
+            <h1 id="profitTitle">售价利润计算器</h1>
+            <span>美国站汽车零配件利润初筛</span>
+          </div>
+
+          <article class="profit-hero" id="profitHero">
+            <div>
+              <span class="chip">美国站</span>
+              <h2 id="profitValue">$0.00</h2>
+              <p id="profitHint">/ 单件利润</p>
+              <strong id="profitCny">≈ ¥0.00</strong>
+            </div>
+            <div class="kpi-card">
+              <span>利润率</span>
+              <strong id="marginValue">0.00%</strong>
+            </div>
+            <div class="kpi-card">
+              <span>月毛利额</span>
+              <strong id="monthlyProfit">$0.00</strong>
+              <small id="monthlyProfitCny">≈ ¥0.00</small>
+            </div>
+            <div class="kpi-card">
+              <span>预计年毛利</span>
+              <strong id="annualProfit">$0.00</strong>
+              <small id="annualProfitCny">≈ ¥0.00</small>
+            </div>
+          </article>
+
+          <article class="breakdown-card">
+            <div class="breakdown-title">
+              <div>
+                <p>Breakdown</p>
+                <h2>费用明细</h2>
+              </div>
+              <span>$ 美元</span>
+            </div>
+            <div id="breakdownRows" class="breakdown-rows"></div>
+          </article>
+
+          <div class="info-grid">
+            <article>
+              <h2>固定费率</h2>
+              <div id="rateNotes" class="rate-list"></div>
+            </article>
+            <article>
+              <h2>退货规则</h2>
+              <p id="returnRuleText">汽车和户外动力设备退货率阈值 9.1%，月发货少于 25 件不收。</p>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="view guide-view" id="guideView" aria-labelledby="guideTitle">
+        <div class="guide-panel">
+          <div class="section-label">使用说明</div>
+          <h1 id="guideTitle">美国站汽车零配件费用口径</h1>
+          <p>本工具只保留美国站数据，面向汽车零配件商品。配送费按 2026 FBA 非服装普通商品规则计算；利润页会把配送费、佣金、广告费、退货处理费和月度仓储费汇总为单件利润。</p>
+          <ul>
+            <li>配送费：根据包装后尺寸、实重、体积重、价格档和季节匹配美国 FBA 费率。</li>
+            <li>燃油和物流附加费：自 2026-04-17 起按配送费 3.5% 叠加。</li>
+            <li>利润：产品成本会按汇率折算成美元；US 不计算 VAT。</li>
+            <li>退货：汽车和户外动力设备阈值为 9.1%，轮胎阈值为 8.7%，低于 25 件月发货不收。</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

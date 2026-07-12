@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="18px" viewBox="0 0 24 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon / Flags / United States</title>
+    <defs>
+        <path d="M2,0 L13,0 L13,0 L13,10 L0,10 L0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 Z" id="path-1"></path>
+    </defs>
+    <g id="Icon-/-Flags-/-United-States" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#FAFAFA" x="0" y="0" width="24" height="18" rx="2"></rect>
+        <path d="M21,1 L13,1 L13,1 L13,0 L22,0 C23.1045695,-2.16501571e-15 24,0.8954305 24,2 L24,16 C24,17.1045695 23.1045695,18 22,18 L2,18 C0.8954305,18 1.3527075e-16,17.1045695 0,16 L0,9 L0,9 L1,9 L1,17 L23,17 L23,3 C23,1.8954305 22.1045695,1 21,1 Z" id="Rectangle" fill="#EAEDED"></path>
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#43458B" xlink:href="#path-1"></use>
+        <path d="M13,0 L22,0 C23.1045695,-2.02906125e-16 24,0.8954305 24,2 L24,2 L24,2 L13,2 L13,0 Z" id="Rectangle" fill="#E25950"></path>
+        <rect id="Rectangle-Copy-7" fill="#E25950" x="13" y="4" width="11" height="2"></rect>
+        <rect id="Rectangle-Copy-9" fill="#E25950" x="13" y="8" width="11" height="2"></rect>
+        <rect id="Rectangle-Copy-8" fill="#E25950" x="0" y="12" width="24" height="2"></rect>
+        <circle id="Oval" fill="#FAFAFA" cx="2" cy="8" r="1"></circle>
+        <circle id="Oval-Copy-3" fill="#FAFAFA" cx="5" cy="8" r="1"></circle>
+        <circle id="Oval-Copy-6" fill="#FAFAFA" cx="8" cy="8" r="1"></circle>
+        <circle id="Oval-Copy-11" fill="#FAFAFA" cx="11" cy="8" r="1"></circle>
+        <circle id="Oval-Copy" fill="#FAFAFA" cx="2" cy="5" r="1"></circle>
+        <circle id="Oval-Copy-4" fill="#FAFAFA" cx="5" cy="5" r="1"></circle>
+        <circle id="Oval-Copy-7" fill="#FAFAFA" cx="8" cy="5" r="1"></circle>
+        <circle id="Oval-Copy-9" fill="#FAFAFA" cx="11" cy="5" r="1"></circle>
+        <circle id="Oval-Copy-2" fill="#FAFAFA" cx="2" cy="2" r="1"></circle>
+        <circle id="Oval-Copy-5" fill="#FAFAFA" cx="5" cy="2" r="1"></circle>
+        <circle id="Oval-Copy-8" fill="#FAFAFA" cx="8" cy="2" r="1"></circle>
+        <circle id="Oval-Copy-10" fill="#FAFAFA" cx="11" cy="2" r="1"></circle>
+        <path d="M0,16 L24,16 C24,17.1045695 23.1045695,18 22,18 L2,18 C0.8954305,18 1.3527075e-16,17.1045695 0,16 L0,16 L0,16 Z" id="Rectangle-Copy-2" fill="#E25950"></path>
+    </g>
+</svg>

@@ -1,0 +1,66 @@
+{
+  "id": "return_processing_fees_us_2026",
+  "name": "Return processing fees",
+  "marketplace": "US",
+  "product_scope": "automotive_parts",
+  "source_file": "assets/return_charge_fee.html",
+  "inputs": [
+    { "field": "product_category", "type": "select", "values": ["automotive_and_offroad", "tires", "other"] },
+    { "field": "monthly_shipped_units", "type": "number" },
+    { "field": "monthly_returned_units", "type": "number" },
+    { "field": "size_tier", "type": "select", "values": ["small_standard_size", "large_standard_size", "small_bulky", "large_bulky", "oversize"] },
+    { "field": "shipping_weight_lb", "type": "number" }
+  ],
+  "thresholds": {
+    "automotive_and_offroad": 0.091,
+    "tires": 0.087,
+    "minimum_shipped_units_per_month": 25
+  },
+  "rules": {
+    "fee_applies_only_when_return_rate_exceeds_threshold": true,
+    "fee_applies_to_returned_units_above_threshold": true,
+    "billing_timing": "third month, 7th to 15th day"
+  },
+  "rate_table": {
+    "non_clothing": {
+      "small_standard_size": {
+        "up_to_2_oz": 1.78,
+        "2_to_4_oz": 1.84,
+        "4_to_6_oz": 1.90,
+        "6_to_8_oz": 1.96,
+        "8_to_10_oz": 2.02,
+        "10_to_12_oz": 2.08,
+        "12_to_14_oz": 2.14,
+        "14_to_16_oz": 2.21
+      },
+      "large_standard_size": {
+        "up_to_4_oz": 2.36,
+        "4_to_8_oz": 2.70,
+        "8_to_12_oz": 3.05,
+        "12_to_16_oz": 3.39,
+        "16_oz_to_1_5_lb": 3.70,
+        "1_5_to_1_75_lb": 4.32,
+        "1_75_to_2_lb": 4.66,
+        "2_to_2_25_lb": 4.68,
+        "2_25_to_2_5_lb": 4.71,
+        "2_5_to_2_75_lb": 4.73,
+        "2_75_to_3_lb": 5.00,
+        "3_to_20_lb": { "base": 5.00, "increment": 0.05, "increment_unit": "4_oz" }
+      },
+      "small_bulky_large_bulky": {
+        "up_to_50_lb": { "base": 6.74, "increment": 0.32, "increment_unit": "1_lb" }
+      },
+      "oversize": {
+        "up_to_50_lb": 26.33,
+        "50_to_70_lb": { "base": 40.12, "increment": 0.75, "increment_unit": "1_lb_above_51" },
+        "70_to_150_lb": { "base": 52.45, "increment": 0.75, "increment_unit": "1_lb_above_71" },
+        "over_150_lb": { "base": 157.35, "increment": 0.19, "increment_unit": "1_lb_above_151" }
+      }
+    }
+  },
+  "notes": [
+    "Automotive parts only needs the non-clothing branch.",
+    "The fee rate depends on size tier and shipping weight.",
+    "If monthly shipped units are below 25, the fee does not apply."
+  ]
+}

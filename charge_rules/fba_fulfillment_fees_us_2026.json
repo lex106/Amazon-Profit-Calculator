@@ -1,0 +1,79 @@
+{
+  "id": "fba_fulfillment_fees_us_2026",
+  "name": "FBA fulfillment fees",
+  "marketplace": "US",
+  "product_scope": "automotive_parts",
+  "source_file": "assets/FBA_fulfillment_fees.html",
+  "effective_window": {
+    "non_peak": {
+      "start": "2026-01-15",
+      "end": "2026-10-14"
+    },
+    "peak": {
+      "start": "2026-10-15",
+      "end": "2027-01-14"
+    }
+  },
+  "shared_rules": {
+    "fuel_and_logistics_surcharge": {
+      "start": "2026-04-17",
+      "rate": 0.035,
+      "apply_to": [
+        "FBA fulfillment fees",
+        "Remote fulfillment from US to CA/MX/BR",
+        "Buy with Prime",
+        "MCF"
+      ]
+    },
+    "size_logic": {
+      "default_shipping_weight_rule": "use max(unit_weight, dimensional_weight)",
+      "exceptions": [
+        "small_standard_size",
+        "oversize_over_150_lb"
+      ],
+      "dimensional_weight_formula": "length * width * height / 139",
+      "small_bulky_and_oversize_min_dimensions": {
+        "width_in": 2,
+        "height_in": 2
+      }
+    },
+    "special_programs": {
+      "SIPP": {
+        "applies_to": "standard_size",
+        "effect": "lower fulfillment fee",
+        "toggle_field": "is_sipp_certified"
+      },
+      "low_price_fba": {
+        "threshold_usd": 10,
+        "effect": "discounted fulfillment fee",
+        "toggle_field": "is_low_price_item"
+      },
+      "extra_large_surcharge": {
+        "trigger": "longest_side > 96 in OR length_plus_girth > 130 in AND weight <= 150 lb"
+      }
+    }
+  },
+  "inputs": [
+    { "field": "length_in", "type": "number" },
+    { "field": "width_in", "type": "number" },
+    { "field": "height_in", "type": "number" },
+    { "field": "unit_weight_lb", "type": "number" },
+    { "field": "sale_price_usd", "type": "number" },
+    { "field": "market_condition", "type": "select", "values": ["non_peak", "peak"] },
+    { "field": "product_condition", "type": "select", "values": ["standard", "dangerous_goods"] },
+    { "field": "is_sipp_certified", "type": "boolean" },
+    { "field": "is_low_price_item", "type": "boolean" }
+  ],
+  "rate_structure": {
+    "standard_size_non_peak": "table_based",
+    "standard_size_peak": "table_based",
+    "dangerous_goods_non_peak": "table_based",
+    "dangerous_goods_peak": "table_based"
+  },
+  "notes": [
+    "Automotive parts should use the non-clothing tables.",
+    "Dangerous goods is a separate flag and can override the base fulfillment table.",
+    "This file stores the rule system and the key triggers; the fine-grained tier table can be expanded from the source page when needed."
+  ]
+}
+

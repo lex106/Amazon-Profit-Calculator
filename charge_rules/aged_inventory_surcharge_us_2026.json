@@ -1,0 +1,56 @@
+{
+  "id": "aged_inventory_surcharge_us_2026",
+  "name": "Aged inventory surcharge",
+  "marketplace": "US",
+  "product_scope": "automotive_parts",
+  "source_file": "assets/aged_inventory_surcharge.html",
+  "inputs": [
+    { "field": "inventory_age_days", "type": "number" },
+    { "field": "size_tier", "type": "select", "values": ["standard_size", "oversize"] },
+    { "field": "is_dangerous_goods", "type": "boolean" },
+    { "field": "cubic_feet_per_unit", "type": "number" },
+    { "field": "unit_count", "type": "number" },
+    { "field": "per_unit_fee_override", "type": "number" }
+  ],
+  "calculation": {
+    "assessment_day": "15th of each month",
+    "effective_basis": "inventory snapshot",
+    "formula": "greater_of(cubic_foot_fee, per_unit_fee)"
+  },
+  "rates": {
+    "before_2026_01_16": {
+      "181_210_days": 0.50,
+      "211_240_days": 1.00,
+      "241_270_days": 1.50,
+      "271_300_days": 5.45,
+      "301_330_days": 5.70,
+      "331_365_days": 5.90,
+      "366_plus_days": {
+        "cubic_foot_fee": 6.90,
+        "per_unit_fee": 0.15
+      }
+    },
+    "from_2026_01_16": {
+      "181_210_days": 0.50,
+      "211_240_days": 1.00,
+      "241_270_days": 1.50,
+      "271_300_days": 5.45,
+      "301_330_days": 5.70,
+      "331_365_days": 5.90,
+      "366_455_days": {
+        "cubic_foot_fee": 6.90,
+        "per_unit_fee": 0.30
+      },
+      "456_plus_days": {
+        "cubic_foot_fee": 7.90,
+        "per_unit_fee": 0.35
+      }
+    }
+  },
+  "notes": [
+    "Charged in addition to monthly storage fees.",
+    "Only the oldest inventory bucket is relevant to the fee snapshot.",
+    "Automotive parts can still fall into this fee if aged long enough."
+  ]
+}
+

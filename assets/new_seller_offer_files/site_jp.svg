@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_2" data-name="图层 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 72 72">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-2, .cls-3 {
+        stroke-width: 0px;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #161d26;
+      }
+
+      .cls-4 {
+        stroke: #161d26;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" width="72" height="72"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1" data-name="Layer 1">
+    <g class="cls-1">
+      <g>
+        <g>
+          <rect class="cls-3" x="6.14" y="57.04" width="59.72" height="3" rx="1" ry="1"/>
+          <path class="cls-4" d="M62.43,58.54c-15.55-21.64-17.43-45.04-17.43-45.04h-18s-4.74,28.25-17.43,45.04"/>
+          <path class="cls-3" d="M25.48,53.53l-.75-.66c-.41-.37-.45-1-.08-1.41l.33-.37c3.7-4.16,5.14-8.84,5.16-8.89l.15-.48c.16-.53.72-.83,1.24-.67l.96.29c.53.16.83.72.67,1.25l-.14.48c-.06.22-1.64,5.35-5.79,10.02l-.33.37c-.37.41-1,.45-1.41.08Z"/>
+          <path class="cls-3" d="M50.93,59.43c-.44.34-1.07.25-1.4-.19l-.3-.4c-5.03-6.58-5.98-12.87-6.02-13.14l-.07-.5c-.08-.55.3-1.05.85-1.13l.99-.14c.55-.08,1.05.3,1.13.85l.07.49c.02.12.92,5.85,5.43,11.74l.3.4c.34.44.25,1.07-.19,1.4l-.79.61Z"/>
+        </g>
+        <path class="cls-4" d="M24.96,22.83s1.68,3.39,4.76,3.39,3.8-2.21,6.28-2.21"/>
+        <path class="cls-4" d="M46.68,23.2s-1.12,3.02-4.19,3.02-3.8-2.21-6.28-2.21"/>
+      </g>
+    </g>
+  </g>
+</svg>

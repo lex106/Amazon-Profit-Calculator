@@ -1,0 +1,31 @@
+{
+  "id": "fba_disposal_order_fees_us_2026",
+  "name": "FBA disposal order fees",
+  "marketplace": "US",
+  "product_scope": "automotive_parts",
+  "source_file": "assets/FBA_disposal_order_fees.html",
+  "inputs": [
+    { "field": "size_tier", "type": "select", "values": ["standard_size", "large_bulky", "extra_large", "special_handling"] },
+    { "field": "shipping_weight_lb", "type": "number" }
+  ],
+  "rates": {
+    "standard_size": {
+      "up_to_0_5_lb": 1.04,
+      "0_5_to_1_lb": 1.53,
+      "1_to_2_lb": 2.27,
+      "over_2_lb": { "base": 2.89, "increment_above_2_lb": 1.06 }
+    },
+    "large_bulky_extra_large_special_handling": {
+      "up_to_1_lb": 3.12,
+      "1_to_2_lb": 4.30,
+      "2_to_4_lb": 6.36,
+      "4_to_10_lb": 10.04,
+      "over_10_lb": { "base": 14.32, "increment_above_10_lb": 1.06 }
+    }
+  },
+  "notes": [
+    "One-time fee, charged when unit is disposed of.",
+    "Use the same weight logic as removal fees."
+  ]
+}
+

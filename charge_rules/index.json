@@ -1,0 +1,49 @@
+{
+  "name": "amazon-fba-charge-rules",
+  "scope": {
+    "marketplace": "US",
+    "product_scope": "automotive_parts"
+  },
+  "files": [
+    {
+      "id": "fba_fulfillment_fees_us_2026",
+      "file": "fba_fulfillment_fees_us_2026.json",
+      "source": "assets/FBA_fulfillment_fees.html"
+    },
+    {
+      "id": "monthly_inventory_storage_fees_us_2026",
+      "file": "monthly_inventory_storage_fees_us_2026.json",
+      "source": "assets/monthly_inventory_storage_fees.html"
+    },
+    {
+      "id": "inbound_processing_fees_us_2026",
+      "file": "inbound_processing_fees_us_2026.json",
+      "source": "assets/Inbound_processing_fees.html"
+    },
+    {
+      "id": "aged_inventory_surcharge_us_2026",
+      "file": "aged_inventory_surcharge_us_2026.json",
+      "source": "assets/aged_inventory_surcharge.html"
+    },
+    {
+      "id": "fba_removal_order_fees_us_2026",
+      "file": "fba_removal_order_fees_us_2026.json",
+      "source": "assets/FBA_removal_order_fees.html"
+    },
+    {
+      "id": "fba_disposal_order_fees_us_2026",
+      "file": "fba_disposal_order_fees_us_2026.json",
+      "source": "assets/FBA_disposal_order_fees.html"
+    },
+    {
+      "id": "return_processing_fees_us_2026",
+      "file": "return_processing_fees_us_2026.json",
+      "source": "assets/return_charge_fee.html"
+    },
+    {
+      "id": "low_inventory_fee_us_2026",
+      "file": "low_inventory_fee_us_2026.json",
+      "source": "assets/low_inventory_fee.html"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="18px" viewBox="0 0 24 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon / Flags / India</title>
+    <g id="Icon-/-Flags-/-India" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#FAFAFA" x="0" y="6" width="24" height="6"></rect>
+        <path d="M0,12 L24,12 L24,16 C24,17.1045695 23.1045695,18 22,18 L2,18 C0.8954305,18 1.3527075e-16,17.1045695 0,16 L0,12 L0,12 Z" id="Rectangle-Copy" fill="#24B47E"></path>
+        <path d="M0,0 L24,0 L24,4 C24,5.1045695 23.1045695,6 22,6 L2,6 C0.8954305,6 1.3527075e-16,5.1045695 0,4 L0,0 L0,0 Z" id="Rectangle-Copy" fill="#F79A59" transform="translate(12.000000, 3.000000) scale(1, -1) translate(-12.000000, -3.000000) "></path>
+        <rect id="Rectangle" fill="#EAEDED" x="23" y="6" width="1" height="6"></rect>
+        <rect id="Rectangle-Copy-2" fill="#EAEDED" x="0" y="6" width="1" height="6"></rect>
+        <circle id="Oval" stroke="#6772E5" cx="12" cy="9" r="1.5"></circle>
+    </g>
+</svg>
