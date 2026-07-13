@@ -44,6 +44,11 @@
       "id": "low_inventory_fee_us_2026",
       "file": "low_inventory_fee_us_2026.json",
       "source": "assets/low_inventory_fee.html"
+    },
+    {
+      "id": "new_seller_offer_us_2026",
+      "file": "new_seller_offer_us_2026.json",
+      "source": "assets/new_seller_offer.html"
     }
   ]
 }

@@ -17,3 +17,4 @@ Files:
 - `fba_disposal_order_fees_us_2026.json`
 - `return_processing_fees_us_2026.json`
 - `low_inventory_fee_us_2026.json`
+- `new_seller_offer_us_2026.json`
