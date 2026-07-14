@@ -531,6 +531,7 @@ function calculateProfit() {
   const firstLegCostPerKgCny = Number($("#firstLegCostPerKgCny").value) || 0;
   const productWeightKg = state.fee ? state.fee.weightKg : Number($("#weightKg").value) || 0;
   const fulfillmentFee = $("#syncFee").checked && state.fee ? state.fee.total : Number($("#profitFulfillmentFee").value) || 0;
+  const inboundFee = $("#syncFee").checked && state.fee ? state.fee.inboundFee : Number($("#profitInboundFee").value) || 0;
   const exchangeRate = Number($("#exchangeRate").value) || 0;
   const advertisingRate = (Number($("#advertisingRate").value) || 0) / 100;
   const returnRate = (Number($("#manualReturnRate").value) || 0) / 100;
@@ -554,19 +555,20 @@ function calculateProfit() {
   const returnFee = returnFeeBeforeBenefit;
   const storageFee = state.fee ? state.fee.storageFee : 0;
   const effectiveStorageFee = storageFee;
-  const fixedOperatingCost = productCostLocal + firstLegCost + fulfillmentFee + returnFee + storageFee;
+  const fixedOperatingCost = productCostLocal + firstLegCost + fulfillmentFee + inboundFee + returnFee + storageFee;
   const totalCost = fixedOperatingCost + referralFee + advertisingFee;
   const profit = salePrice - totalCost;
   const margin = salePrice > 0 ? profit / salePrice : 0;
 
-  const pricingFixedCostBeforeBenefits = productCostLocal + firstLegCost + fulfillmentFee + returnFeeBeforeBenefit + storageFee;
+  const pricingFixedCostBeforeBenefits = productCostLocal + firstLegCost + fulfillmentFee + inboundFee + returnFeeBeforeBenefit + storageFee;
   const referralBenefitRate = newSellerBenefitPeriod ? 0.10 : 0;
+  const inboundBenefitCredit = newSellerBenefitPeriod ? inboundFee : 0;
   const returnBenefitCredit = newSellerBenefitPeriod ? returnFeeBeforeBenefit : 0;
   const storageBenefitCredit = newSellerBenefitPeriod ? storageFee : 0;
   const effectiveReferralRate = Math.max(params.referralRate - referralBenefitRate, 0);
   const variableRate = effectiveReferralRate + advertisingRate;
   const fixedBaseCostBeforeBenefits = pricingFixedCostBeforeBenefits;
-  const fixedBaseCostAfterBenefits = pricingFixedCostBeforeBenefits - returnBenefitCredit - storageBenefitCredit;
+  const fixedBaseCostAfterBenefits = pricingFixedCostBeforeBenefits - inboundBenefitCredit - returnBenefitCredit - storageBenefitCredit;
   const breakEvenPrice = variableRate < 1 ? fixedBaseCostAfterBenefits / (1 - variableRate) : 0;
   const targetPriceDenominator = 1 - variableRate - targetMarginRate;
   const targetProfitPrice = targetPriceDenominator > 0 ? fixedBaseCostAfterBenefits / targetPriceDenominator : 0;
@@ -589,7 +591,7 @@ function calculateProfit() {
     : 0;
   const pricingReferralFee = pricingReferralFeeBeforeBenefit - referralBenefitCredit;
   const pricingAdvertisingFee = recommendedPrice * advertisingRate;
-  const totalBenefitCredit = referralBenefitCredit + returnBenefitCredit + storageBenefitCredit;
+  const totalBenefitCredit = referralBenefitCredit + inboundBenefitCredit + returnBenefitCredit + storageBenefitCredit;
   const pricingTotalCost = fixedBaseCostAfterBenefits + pricingReferralFee + pricingAdvertisingFee;
   const variableFeesAtPrice = (price) => {
     const baseReferralFee = Math.max(price * params.referralRate, params.minFee);
@@ -617,6 +619,7 @@ function calculateProfit() {
     firstLegCostCny,
     firstLegCost,
     fulfillmentFee,
+    inboundFee,
     referralFee,
     referralFeeBeforeBenefit,
     referralBenefitRate,
@@ -643,6 +646,7 @@ function calculateProfit() {
     effectiveStorageFee,
     returnBenefitCredit,
     storageBenefitCredit,
+    inboundBenefitCredit,
     totalBenefitCredit,
     fixedBaseCostBeforeBenefits,
     fixedBaseCostAfterBenefits,
@@ -671,6 +675,7 @@ function renderProfit() {
   $("#profitHero").classList.toggle("is-loss", p.profit < 0);
   if ($("#syncFee").checked && state.fee) {
     $("#profitFulfillmentFee").value = round(state.fee.total).toFixed(2);
+    $("#profitInboundFee").value = round(state.fee.inboundFee).toFixed(2);
   }
 
   const rows = [
@@ -678,6 +683,7 @@ function renderProfit() {
     ["产品成本", -p.productCostLocal, true],
     ["头程费用", -p.firstLegCost, true],
     ["亚马逊配送费", -p.fulfillmentFee, true],
+    ["入库配置费", -p.inboundFee, true],
     ["佣金", -p.referralFee, true],
     ["广告费", -p.advertisingFee, true],
     ["退货处理费", -p.returnFee, true],
@@ -693,6 +699,7 @@ function renderProfit() {
     automotive: [
       ["佣金", "售价 × 12%（最低 $0.30）"],
       ["头程费用", `包装重量 ${p.productWeightKg.toFixed(2)} kg × ¥${p.firstLegCostPerKgCny.toFixed(2)} / 汇率`],
+      ["入库配置费", "引用费用计算器的入库方案和计费重量"],
       ["广告费", `售价 × ${fmtPct(p.advertisingRate)}`],
       ["退货处理", `单次 ${fmtMoney(p.baseReturnProcessingFee)} × 退货率 ${fmtPct(p.returnRate)}`],
       ["仓租", "引用费用计算器的单件月度仓储费"],
@@ -700,6 +707,7 @@ function renderProfit() {
     tires: [
       ["佣金", "售价 × 10%（最低 $0.30）"],
       ["头程费用", `包装重量 ${p.productWeightKg.toFixed(2)} kg × ¥${p.firstLegCostPerKgCny.toFixed(2)} / 汇率`],
+      ["入库配置费", "引用费用计算器的入库方案和计费重量"],
       ["广告费", `售价 × ${fmtPct(p.advertisingRate)}`],
       ["退货处理", `单次 ${fmtMoney(p.baseReturnProcessingFee)} × 退货率 ${fmtPct(p.returnRate)}`],
       ["仓租", "引用费用计算器的单件月度仓储费"],
@@ -707,6 +715,7 @@ function renderProfit() {
     other: [
       ["佣金", "售价 × 15%（最低 $0.30）"],
       ["头程费用", `包装重量 ${p.productWeightKg.toFixed(2)} kg × ¥${p.firstLegCostPerKgCny.toFixed(2)} / 汇率`],
+      ["入库配置费", "引用费用计算器的入库方案和计费重量"],
       ["广告费", `售价 × ${fmtPct(p.advertisingRate)}`],
       ["退货处理", `单次 ${fmtMoney(p.baseReturnProcessingFee)} × 退货率 ${fmtPct(p.returnRate)}`],
       ["仓租", "引用费用计算器的单件月度仓储费"],
@@ -741,6 +750,7 @@ function renderPricingAnalysis(p) {
     { label: "产品成本", value: fmtMoney(p.productCostLocal) },
     { label: "头程费用", value: fmtMoney(p.firstLegCost) },
     { label: "亚马逊配送费", value: fmtMoney(p.fulfillmentFee) },
+    { label: "入库配置费", value: renderBenefitValue(p.inboundFee, p.inboundBenefitCredit, p.newSellerBenefitPeriod) },
     { label: "退货处理费", value: renderBenefitValue(p.returnFeeBeforeBenefit, p.returnBenefitCredit, p.newSellerBenefitPeriod) },
     { label: "月度仓储费", value: renderBenefitValue(p.storageFee, p.storageBenefitCredit, p.newSellerBenefitPeriod) },
     { label: "基础履约成本合计", value: fmtMoney(p.fixedBaseCostAfterBenefits), total: true },
@@ -760,6 +770,10 @@ function renderPricingAnalysis(p) {
     {
       label: "品牌佣金抵扣",
       value: p.newSellerBenefitPeriod ? `${fmtStrikeMoney(p.pricingReferralFeeBeforeBenefit)} ${fmtMoney(p.pricingReferralFee)}` : "$0.00",
+    },
+    {
+      label: "入库配置费抵扣",
+      value: p.newSellerBenefitPeriod ? `${fmtStrikeMoney(p.inboundFee)} ${fmtMoney(p.inboundFee - p.inboundBenefitCredit)}` : "$0.00",
     },
     {
       label: "新品入仓退货处理费抵扣",
