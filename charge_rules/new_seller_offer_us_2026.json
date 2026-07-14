@@ -1,0 +1,193 @@
+{
+  "id": "new_seller_offer_us_2026",
+  "name": "Amazon 2026 new seller offer",
+  "marketplace": "US",
+  "product_scope": "automotive_parts",
+  "source_file": "assets/new_seller_offer.html",
+  "source_images": [
+    "assets/new_seller_offer_files/2.webp",
+    "assets/new_seller_offer_files/6.webp",
+    "assets/new_seller_offer_files/9.webp",
+    "assets/new_seller_offer_files/10.webp",
+    "assets/new_seller_offer_files/11.webp",
+    "assets/new_seller_offer_files/17.webp",
+    "assets/new_seller_offer_files/18.webp"
+  ],
+  "eligibility": {
+    "seller_type": "professional_seller",
+    "first_sellable_asin_date_on_or_after": "2026-03-12",
+    "notes": [
+      "Only the US marketplace is retained in the calculator.",
+      "The source article covers multiple marketplaces, but this file keeps the US-specific rules only."
+    ]
+  },
+  "benefits": [
+    {
+      "id": "brand_commission_coupon",
+      "name": "Brand referral fee coupon",
+      "eligibility": [
+        "brand_registered_within_6_months"
+      ],
+      "value": {
+        "currency": "USD",
+        "amount": 52500,
+        "mechanism": "10% credit on the first 50000 USD of sales, then 5% credit on the remaining eligible sales until the coupon is exhausted"
+      },
+      "usage_window_months": 12,
+      "notes": [
+        "Model as a coupon-style credit rather than a pure fee rate reduction."
+      ]
+    },
+    {
+      "id": "vine_credit",
+      "name": "Vine credit",
+      "eligibility": [
+        "register_within_90_days_of_brand_registration_or_first_sellable_asin_whichever_is_later"
+      ],
+      "value": {
+        "currency": "USD",
+        "amount": 200
+      }
+    },
+    {
+      "id": "fba_new_seller_shipping_credit",
+      "name": "FBA inbound shipping credit",
+      "eligibility": [
+        "first_fba_shipment_created_within_90_days_of_first_sellable_asin"
+      ],
+      "value": {
+        "currency": "USD",
+        "options": [
+          {
+            "type": "carrier_fee_credit",
+            "amount": 100
+          },
+          {
+            "type": "fulfillment_center_delivery_fee_credit",
+            "amount": 200
+          }
+        ]
+      }
+    },
+    {
+      "id": "new_selection_program",
+      "name": "New Selection Program fee waivers",
+      "eligibility": [
+        "eligible_new_selection_program_enrollment"
+      ],
+      "waived_fees": [
+        "monthly_inventory_storage_fee",
+        "fba_removal_order_fee",
+        "return_processing_fee"
+      ],
+      "notes": [
+        "This item is the cleanest mapping for the calculator toggles that turn these fees on or off."
+      ]
+    },
+    {
+      "id": "inbound_placement_service_credit",
+      "name": "Inbound placement service fee credit",
+      "eligibility": [
+        "eligible_new_seller_offer_period"
+      ],
+      "value": {
+        "currency": "USD",
+        "amount": 400
+      }
+    },
+    {
+      "id": "storage_utilization_fee_waiver",
+      "name": "Storage utilization surcharge waiver",
+      "eligibility": [
+        "within_365_days_of_first_sellable_asin"
+      ],
+      "waived_fees": [
+        "aged_inventory_surcharge"
+      ]
+    },
+    {
+      "id": "low_inventory_fee_waiver",
+      "name": "Low inventory level fee waiver",
+      "eligibility": [
+        "within_365_days_of_first_sellable_asin"
+      ],
+      "waived_fees": [
+        "low_inventory_fee"
+      ]
+    },
+    {
+      "id": "advertising_coupon",
+      "name": "Advertising coupon",
+      "eligibility": [
+        "ad_spend_within_30_days_from_offer_start"
+      ],
+      "value": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "spend_min_usd": 50,
+            "spend_max_usd": 200,
+            "coupon_amount_usd": 50
+          },
+          {
+            "spend_min_usd": 200,
+            "spend_max_usd": 1000,
+            "coupon_amount_usd": 200
+          },
+          {
+            "spend_min_usd": 1000,
+            "coupon_amount_usd": 1000
+          }
+        ],
+        "coupon_validity_days": 30
+      }
+    },
+    {
+      "id": "mcf_discount",
+      "name": "MCF discount",
+      "eligibility": [
+        "eligible_mcf_orders"
+      ],
+      "value": {
+        "discount_rate": 0.25,
+        "unit_limit": 100
+      }
+    },
+    {
+      "id": "coupon_fee_credit",
+      "name": "Coupon fee credit",
+      "eligibility": [
+        "coupon_used_within_90_days_of_first_sellable_asin"
+      ],
+      "value": {
+        "currency": "USD",
+        "amount": 50
+      }
+    }
+  ],
+  "calculator_mappings": {
+    "fee_toggles": [
+      "aged_inventory_surcharge",
+      "return_processing_fee",
+      "fba_removal_order_fee",
+      "fba_disposal_order_fee",
+      "low_inventory_fee"
+    ],
+    "waived_when_off": [
+      "aged_inventory_surcharge",
+      "return_processing_fee",
+      "fba_removal_order_fee",
+      "fba_disposal_order_fee",
+      "low_inventory_fee"
+    ],
+    "notes": [
+      "When a toggle is off, the corresponding fee can be shown as 0 in the calculator summary.",
+      "The offer itself is separate from the base fee rules and should be applied as a discount/waiver layer."
+    ]
+  },
+  "notes": [
+    "The source article uses image-based explanations for several benefits; those are normalized here into structured rules.",
+    "Only US rules are retained.",
+    "The calculator can map these benefits to fee overrides or coupon credits without re-reading the article."
+  ]
+}
