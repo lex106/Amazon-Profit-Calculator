@@ -224,6 +224,10 @@
               <input id="profitFulfillmentFee" type="number" min="0" step="0.01" value="0" />
             </label>
             <label class="wide">
+              <span>入库配置费 $</span>
+              <input id="profitInboundFee" type="number" min="0" step="0.01" value="0" />
+            </label>
+            <label class="wide">
               <span>美元汇率 CNY/USD</span>
               <input id="exchangeRate" type="number" min="0" step="0.0001" value="7.18" />
             </label>
@@ -351,9 +355,10 @@
         <div class="guide-panel">
           <div class="section-label">使用说明</div>
           <h1 id="guideTitle">美国站汽车零配件费用口径</h1>
-          <p>本工具只保留美国站数据，面向汽车零配件商品。配送费按 2026 FBA 非服装普通商品规则计算；利润页会把配送费、佣金、广告费、退货处理费和月度仓储费汇总为单件利润。</p>
+          <p>本工具只保留美国站数据，面向汽车零配件商品。配送费按 2026 FBA 非服装普通商品规则计算；利润页会把配送费、入库配置费、佣金、广告费、退货处理费和月度仓储费汇总为单件利润。</p>
           <ul>
             <li>配送费：根据包装后尺寸、实重、体积重、价格档和季节匹配美国 FBA 费率。</li>
+            <li>入库配置费：根据费用计算器中的入库方案、尺寸分段和计费重量计算；利润页可自动引用，也可手动填写。</li>
             <li>燃油和物流附加费：自 2026-04-17 起按配送费 3.5% 叠加。</li>
             <li>利润：产品成本会按汇率折算成美元；US 不计算 VAT。</li>
             <li>退货：利润页按单次退货处理费 × 手动退货率摊销；月发货少于 25 件时可通过阈值开关按 0 计。</li>
