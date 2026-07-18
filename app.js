@@ -93,12 +93,43 @@ const RETURN_RULES = {
   minimumMonthlyShipments: 25,
 };
 
+const SAMPLE_PRODUCTS = [
+  { sku: "CF-10910-A", originalSku: "10910N", category: "起动机-乘用车", costCny: 203.5, competitorPricing: "B0F388VB1Q US$63.99、B0F8HQ7YT3 US$41.79、B0GCCXHCGG US$58.75", competitorAvgPrice: 54.84, weightKg: 2.72, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-10914-A", originalSku: "10914N", category: "起动机-乘用车", costCny: 220, competitorPricing: "B0B8CXPRC5 US$76.98、B0F38BZN2F US$69.99、B0FC6HFH9D US$59.99", competitorAvgPrice: 68.99, weightKg: 3.12, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-17825-A", originalSku: "17825N", category: "起动机-乘用车", costCny: 198, competitorPricing: "B09TYWG5W7 US$67.98、B0DNQRRDMX US$39.99、B0FWXJJF7Y US$55.99", competitorAvgPrice: 54.65, weightKg: 3.039, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-17870-A", originalSku: "17870N", category: "起动机-乘用车", costCny: 220, competitorPricing: "B0B8CNHR96 US$69.95、B0BWMMCBV3 US$57.98、B0BWQPV33Q US$57.99", competitorAvgPrice: 61.97, weightKg: 3.221, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-19049-A", originalSku: "19049N", category: "起动机-乘用车", costCny: 231, competitorPricing: "B0D8HQ1W5H US$54.89、B0DK35BFSY US$75.98、B0DRCGG9TX US$64.99", competitorAvgPrice: 65.29, weightKg: 3.13, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-19068-A", originalSku: "19068N", category: "起动机-乘用车", costCny: 275, competitorPricing: "B0CLV3T9ZP US$79.95、B0DRCWNWFS US$67.99、B0DRNBH24Z US$59.99", competitorAvgPrice: 69.31, weightKg: 3.74, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-30641-A", originalSku: "30641N", category: "起动机-乘用车", costCny: 214.5, competitorPricing: "B0DKBZQXNC US$50.99", competitorAvgPrice: 50.99, weightKg: 2.731, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-6493-A", originalSku: "6493N", category: "起动机-乘用车", costCny: 220, competitorPricing: "B0C6QKHDD8 US$57.56", competitorAvgPrice: 57.56, weightKg: 2.676, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-6494-A", originalSku: "6494N", category: "起动机-乘用车", costCny: 220, competitorPricing: "B0C9HPCHPN US$72.99、B0D78KSMQT US$56.99", competitorAvgPrice: 64.99, weightKg: 3.54, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-6646-A", originalSku: "6646N", category: "起动机-乘用车", costCny: 225.5, competitorPricing: "B0B4ZZZ6M5 US$60.99、B0F8QLSDJ4 US$56.99、B0GWHK7T4D US$57.00", competitorAvgPrice: 58.33, weightKg: 4.1, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-6970-A", originalSku: "6970N", category: "起动机-乘用车", costCny: 209, competitorPricing: "B091J2FWG3 US$46.95、B0F1TL92F2 US$69.98、B0G1S2SS94 US$45.99", competitorAvgPrice: 54.31, weightKg: 3.28, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-6974-A", originalSku: "6974N", category: "起动机-乘用车", costCny: 214.5, competitorPricing: "B0C6QHKH44 US$77.49", competitorAvgPrice: 77.49, weightKg: 3.07, lengthCm: 28, widthCm: 16, heightCm: 15 },
+  { sku: "CF-34009-A", originalSku: "34009N", category: "起动机-园林机械", costCny: 127.5, competitorPricing: "B0CGF1R57L US$49.91、B0CZKHGGP1 US$49.87、B0F131BFN1 US$45.82", competitorAvgPrice: 48.53, weightKg: 2.6, lengthCm: 20, widthCm: 11, heightCm: 10.5 },
+  { sku: "CF-5742-A", originalSku: "5742N", category: "起动机-园林机械", costCny: 87.5, competitorPricing: "B08BC6S3D3 US$39.93、B0C28TM7VG US$29.91", competitorAvgPrice: 34.92, weightKg: 2.268, lengthCm: 20, widthCm: 11, heightCm: 10.5 },
+  { sku: "CF-5746-A", originalSku: "5746N", category: "起动机-园林机械", costCny: 97.5, competitorPricing: "B0C6XVMHXZ US$42.88、B0F9NP3FGW US$35.94", competitorAvgPrice: 39.41, weightKg: 2.57, lengthCm: 20, widthCm: 11, heightCm: 10.5 },
+  { sku: "CF-5770-A", originalSku: "5770N", category: "起动机-园林机械", costCny: 127.5, competitorPricing: "B0C6XYPYG2 US$49.87、B0DCJM9FZ3 US$39.84、B0GJ8SM9RZ US$41.93", competitorAvgPrice: 43.88, weightKg: 2.46, lengthCm: 20, widthCm: 11, heightCm: 10.5 },
+  { sku: "CF-5777-A", originalSku: "5777N", category: "起动机-园林机械", costCny: 97.5, competitorPricing: "B01DTK9ME2 US$36.89、B0711LWK9R US$46.92、B0C6XYM7JM US$39.89", competitorAvgPrice: 41.23, weightKg: 2.359, lengthCm: 20, widthCm: 11, heightCm: 10.5 },
+  { sku: "CF-5796-A", originalSku: "5796N", category: "起动机-园林机械", costCny: 137.5, competitorPricing: "B00TPKNGN4 US$42.88、B0BNTTGVHT US$47.42、B0C6JP3164 US$43.69、B0C6XYTH6H US$49.87", competitorAvgPrice: 46.72, weightKg: 2.268, lengthCm: 20, widthCm: 11, heightCm: 10.5 },
+  { sku: "CF-5801-A", originalSku: "5801N", category: "起动机-园林机械", costCny: 127.5, competitorPricing: "B08KXW6PYR US$49.91、B08NVKRR8P US$49.32、B0CSJZB3VM US$46.92", competitorAvgPrice: 48.72, weightKg: 2.722, lengthCm: 25, widthCm: 11, heightCm: 11 },
+  { sku: "CF-5954-A", originalSku: "5954N", category: "起动机-园林机械", costCny: 127.5, competitorPricing: "B0B9XN3WPF US$52.91、B0C3L1Z56G US$54.35、B0D3GTLV3D US$58.90、B0F47TPZZV US$53.87、B0GDWM133L US$52.91", competitorAvgPrice: 54.59, weightKg: 2.31, lengthCm: 20, widthCm: 11, heightCm: 10.5 },
+  { sku: "CF-11385-A", originalSku: "11385N", category: "发电机", costCny: 336, competitorPricing: "B083TXQ34H US$67.41、B0CZRCV283 US$85.86、B0DHKL3417 US$92.85", competitorAvgPrice: 82.04, weightKg: 5.78, lengthCm: 24.5, widthCm: 21.5, heightCm: 20 },
+  { sku: "CF-11391-A", originalSku: "11391N", category: "发电机", costCny: 316, competitorPricing: "B0B2WDSLNL US$89.40、B0CCRH9QW9 US$89.40", competitorAvgPrice: 89.4, weightKg: 5.933, lengthCm: 24.5, widthCm: 21.5, heightCm: 20 },
+  { sku: "CF-11570-A", originalSku: "11570N", category: "发电机", costCny: 376, competitorPricing: "B09WZTD2KX US$79.86、B0BK4GH4ZY US$79.37、B0F1CSTF3X US$89.85、B0F9WWNLL7 US$91.85", competitorAvgPrice: 85.23, weightKg: 5.856, lengthCm: 24.5, widthCm: 21.5, heightCm: 20 },
+  { sku: "CF-13980-A", originalSku: "13980N", category: "发电机", costCny: 316, competitorPricing: "B0B6ZG154R US$85.86、B0D5XR9ZS2 US$84.34、B0F93R8Z5W US$84.34", competitorAvgPrice: 84.85, weightKg: 5.879, lengthCm: 24.5, widthCm: 21.5, heightCm: 20 },
+  { sku: "CF-14007-A", originalSku: "14007N", category: "发电机", costCny: 450, competitorPricing: "B0CPY7WNCC US$119.80、B0CY3Z2M14 US$95.84、B0FHVW6SKL US$115.82", competitorAvgPrice: 110.49, weightKg: 6.436, lengthCm: 24.5, widthCm: 21.5, heightCm: 20 },
+  { sku: "CF-8301-A", originalSku: "8301N", category: "发电机", costCny: 346, competitorPricing: "B0DR86M9NR US$108.79、B0FKNG16V3 US$109.83、B0GSZ8PGBP US$98.84", competitorAvgPrice: 105.82, weightKg: 7.738, lengthCm: 24.5, widthCm: 21.5, heightCm: 20 },
+  { sku: "CF-8318-A", originalSku: "8318N", category: "发电机", costCny: 356, competitorPricing: "B091G13CDM US$87.82、B0CB7SZRJ8 US$105.79、B0GVJHSXKP US$89.85", competitorAvgPrice: 94.49, weightKg: 6.105, lengthCm: 24.5, widthCm: 21.5, heightCm: 20 },
+];
+
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
 const state = {
   fee: null,
   view: "fees",
+  portfolioProducts: SAMPLE_PRODUCTS,
 };
 
 function round(n) {
@@ -123,6 +154,33 @@ function fmtPct(value) {
 
 function fmtStrikeMoney(value) {
   return `<s>${fmtMoney(value)}</s>`;
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function pricesFromText(value) {
+  const matches = String(value ?? "").match(/(?:US\$|\$)\s*(\d+(?:\.\d+)?)/gi) || [];
+  return matches
+    .map((match) => Number(match.replace(/[^\d.]/g, "")))
+    .filter((price) => Number.isFinite(price) && price > 0);
+}
+
+function normalizeReferralCategory(category) {
+  const text = String(category ?? "").toLowerCase();
+  if (text.includes("tire") || text.includes("轮胎")) return "tires";
+  return PROFIT_DEFAULTS[text] ? text : "automotive";
+}
+
+function majorCategory(category) {
+  const text = String(category ?? "未分类").trim() || "未分类";
+  return text.split(/[-－—]/)[0].trim() || text;
 }
 
 function dimensionalWeightLb(lengthIn, widthIn, heightIn) {
@@ -352,6 +410,71 @@ function calculateLowInventoryFee(options) {
   return 0;
 }
 
+function calculateFeeForProduct(options) {
+  const {
+    lengthCm,
+    widthCm,
+    heightCm,
+    weightKg,
+    salePrice,
+    season = "nonPeak",
+    inboundPlan = "single",
+    fuelSurcharge = true,
+    sippCertified = false,
+    newSelectionBenefit = false,
+  } = options;
+  const lengthIn = cmToIn(lengthCm);
+  const widthIn = cmToIn(widthCm);
+  const heightIn = cmToIn(heightCm);
+  const weightLb = kgToLb(weightKg);
+  const goodsType = "standard";
+  const dimWeight = dimensionalWeightLb(lengthIn, widthIn, heightIn);
+  const shippingWeight = Math.max(weightLb, dimWeight);
+  const sizeTier = determineSizeTier(lengthIn, widthIn, heightIn, shippingWeight);
+  const fulfillment = pickFulfillmentRate(season, goodsType, sizeTier, shippingWeight, salePrice);
+  const baseFee = fulfillment ? fulfillment.amount : 0;
+  const fuelFee = fuelSurcharge ? baseFee * 0.035 : 0;
+  const sippDiscount = sippCertified && sizeTier !== "oversize" ? Math.min(0.35, baseFee * 0.08) : 0;
+  const total = baseFee + fuelFee - sippDiscount;
+  const priceBand = salePrice < 10 ? "< $10" : salePrice <= 50 ? "$10 ~ $50" : "> $50";
+  const tierLabel = {
+    small: "小号标准尺寸",
+    large: "大号标准尺寸",
+    smallBulky: "小号大件",
+    largeBulky: "大号大件",
+    oversize: "超大件",
+  }[sizeTier];
+  const volumeCuft = cubicFeetFromCm(lengthCm, widthCm, heightCm);
+  const storageFee = calculateStorageFee(sizeTier, goodsType, volumeCuft, 1, season, newSelectionBenefit);
+  const inboundFee = calculateInboundFee(sizeTier, shippingWeight, inboundPlan);
+
+  return {
+    lengthCm,
+    widthCm,
+    heightCm,
+    weightKg,
+    dimWeight,
+    shippingWeight,
+    dimWeightKg: lbToKg(dimWeight),
+    shippingWeightKg: lbToKg(shippingWeight),
+    sizeTier,
+    tierLabel,
+    baseFee,
+    fuelFee,
+    sippDiscount,
+    total,
+    priceBand,
+    season,
+    goodsType,
+    salePrice,
+    newSelectionBenefit,
+    inboundPlan,
+    volumeCuft,
+    storageFee,
+    inboundFee,
+  };
+}
+
 function renderFeeRows(fee) {
   const rows = [
     ["FBA 运费", fee.total],
@@ -383,13 +506,8 @@ function calculateFee() {
   const widthCm = Number($("#widthCm").value) || 0;
   const heightCm = Number($("#heightCm").value) || 0;
   const weightKg = Number($("#weightKg").value) || 0;
-  const lengthIn = cmToIn(lengthCm);
-  const widthIn = cmToIn(widthCm);
-  const heightIn = cmToIn(heightCm);
-  const weightLb = kgToLb(weightKg);
   const salePrice = Number($("#salePrice").value) || 0;
   const season = $("#season").value;
-  const goodsType = "standard";
   const fuelSurcharge = $("#fuelSurcharge").checked;
   const sippCertified = $("#sippCertified").checked;
   const newSelectionBenefit = $("#newSelectionBenefit").checked;
@@ -406,37 +524,26 @@ function calculateFee() {
   const lowInventoryAglExempt = $("#lowInventoryAglExempt").checked;
   const unitCount = 1;
   const inboundPlan = $("#inboundPlan").value;
-  const dimWeight = dimensionalWeightLb(lengthIn, widthIn, heightIn);
-  const shippingWeight = goodsType === "standard" || goodsType === "dangerous"
-    ? Math.max(weightLb, dimWeight)
-    : Math.max(weightLb, dimWeight);
-  const sizeTier = determineSizeTier(lengthIn, widthIn, heightIn, shippingWeight);
-  const effectiveSalePrice = salePrice;
-  const fulfillment = pickFulfillmentRate(season, goodsType, sizeTier, shippingWeight, effectiveSalePrice);
-  const baseFee = fulfillment ? fulfillment.amount : 0;
-  const fuelFee = fuelSurcharge ? baseFee * 0.035 : 0;
-  const sippDiscount = sippCertified && sizeTier !== "oversize" ? Math.min(0.35, baseFee * 0.08) : 0;
-  const total = baseFee + fuelFee - sippDiscount;
-  const priceBand = effectiveSalePrice < 10 ? "< $10" : effectiveSalePrice <= 50 ? "$10 ~ $50" : "> $50";
-  const tierLabel = {
-    small: "小号标准尺寸",
-    large: "大号标准尺寸",
-    smallBulky: "小号大件",
-    largeBulky: "大号大件",
-    oversize: "超大件",
-  }[sizeTier];
-
-  const volumeCuft = cubicFeetFromCm(lengthCm, widthCm, heightCm);
-  const storageFee = calculateStorageFee(sizeTier, goodsType, volumeCuft, unitCount, season, newSelectionBenefit);
-  const agedFee = agedInventoryFeeEnabled ? calculateAgedInventoryFee(volumeCuft, unitCount, 181) : 0;
-  const inboundFee = calculateInboundFee(sizeTier, shippingWeight, inboundPlan);
-  const returnFee = returnProcessingFeeEnabled ? calculateReturnProcessingFee(sizeTier, shippingWeight) : 0;
-  const removalFee = removalFeeEnabled ? calculateRemovalDisposalFee(sizeTier, shippingWeight) : 0;
-  const disposalFee = disposalFeeEnabled ? calculateRemovalDisposalFee(sizeTier, shippingWeight) : 0;
+  const feeBase = calculateFeeForProduct({
+    lengthCm,
+    widthCm,
+    heightCm,
+    weightKg,
+    salePrice,
+    season,
+    inboundPlan,
+    fuelSurcharge,
+    sippCertified,
+    newSelectionBenefit,
+  });
+  const agedFee = agedInventoryFeeEnabled ? calculateAgedInventoryFee(feeBase.volumeCuft, unitCount, 181) : 0;
+  const returnFee = returnProcessingFeeEnabled ? calculateReturnProcessingFee(feeBase.sizeTier, feeBase.shippingWeight) : 0;
+  const removalFee = removalFeeEnabled ? calculateRemovalDisposalFee(feeBase.sizeTier, feeBase.shippingWeight) : 0;
+  const disposalFee = disposalFeeEnabled ? calculateRemovalDisposalFee(feeBase.sizeTier, feeBase.shippingWeight) : 0;
   const lowInventoryFee = lowInventoryFeeEnabled ? calculateLowInventoryFee({
-    sizeTier,
-    productWeightLb: weightLb,
-    shippingWeightLb: shippingWeight,
+    sizeTier: feeBase.sizeTier,
+    productWeightLb: kgToLb(weightKg),
+    shippingWeightLb: feeBase.shippingWeight,
     longDays: lowInventoryLongDays,
     shortDays: lowInventoryShortDays,
     unitsSold7d: lowInventoryUnits7d,
@@ -444,27 +551,10 @@ function calculateFee() {
     newSelectionExempt: newSelectionBenefit,
     aglExempt: lowInventoryAglExempt,
   }) : 0;
-  const totalOptionalFees = storageFee + agedFee + inboundFee + returnFee + removalFee + disposalFee + lowInventoryFee;
+  const totalOptionalFees = feeBase.storageFee + agedFee + feeBase.inboundFee + returnFee + removalFee + disposalFee + lowInventoryFee;
 
   state.fee = {
-    lengthCm,
-    widthCm,
-    heightCm,
-    weightKg,
-    dimWeight,
-    shippingWeight,
-    dimWeightKg: lbToKg(dimWeight),
-    shippingWeightKg: lbToKg(shippingWeight),
-    sizeTier,
-    tierLabel,
-    baseFee,
-    fuelFee,
-    sippDiscount,
-    total,
-    priceBand,
-    season,
-    goodsType,
-    salePrice,
+    ...feeBase,
     agedInventoryFeeEnabled,
     returnProcessingFeeEnabled,
     removalFeeEnabled,
@@ -478,15 +568,12 @@ function calculateFee() {
     newSelectionBenefit,
     unitCount,
     inboundPlan,
-    volumeCuft,
-    storageFee,
     agedFee,
-    inboundFee,
     returnProcessingFee: returnFee,
     removalFee,
     disposalFee,
     lowInventoryFee,
-    totalAllFees: total + totalOptionalFees,
+    totalAllFees: feeBase.total + totalOptionalFees,
   };
   if ($("#syncFee").checked) {
     $("#profitSalePrice").value = salePrice.toFixed(2);
@@ -793,6 +880,282 @@ function renderPricingAnalysis(p) {
 
 }
 
+function getPortfolioSettings() {
+  return {
+    firstLegCostPerKgCny: Number($("#portfolioFirstLegCostPerKgCny").value) || 0,
+    advertisingRate: (Number($("#portfolioAdvertisingRate").value) || 0) / 100,
+    targetMarginRate: (Number($("#portfolioTargetMarginRate").value) || 0) / 100,
+    exchangeRate: Number($("#portfolioExchangeRate").value) || 0,
+    returnRate: (Number($("#portfolioReturnRate").value) || 0) / 100,
+    season: $("#portfolioSeason").value,
+    inboundPlan: $("#portfolioInboundPlan").value,
+    fuelSurcharge: $("#portfolioFuelSurcharge").checked,
+    sippCertified: $("#portfolioSippCertified").checked,
+    newSelectionBenefit: $("#portfolioNewSelectionBenefit").checked,
+    newSellerBenefitPeriod: $("#portfolioNewSellerBenefitPeriod").checked,
+    returnFeeThresholdEnabled: $("#portfolioReturnFeeThresholdEnabled").checked,
+  };
+}
+
+function profitAtPrice(price, model) {
+  const variable = model.variableFeesAtPrice(price);
+  const cost = model.fixedBaseCostAfterBenefits + variable.referral + variable.advertising;
+  const profit = price - cost;
+  return {
+    price,
+    profit,
+    margin: price > 0 ? profit / price : 0,
+    variable,
+  };
+}
+
+function calculateSkuPricing(product, settings) {
+  const salePriceForFee = Number(product.competitorAvgPrice || product.competitorMaxPrice || product.competitorMinPrice) || 0;
+  const fee = calculateFeeForProduct({
+    lengthCm: Number(product.lengthCm) || 0,
+    widthCm: Number(product.widthCm) || 0,
+    heightCm: Number(product.heightCm) || 0,
+    weightKg: Number(product.weightKg) || 0,
+    salePrice: salePriceForFee,
+    season: settings.season,
+    inboundPlan: settings.inboundPlan,
+    fuelSurcharge: settings.fuelSurcharge,
+    sippCertified: settings.sippCertified,
+    newSelectionBenefit: settings.newSelectionBenefit,
+  });
+  const category = normalizeReferralCategory(product.category);
+  const params = PROFIT_DEFAULTS[category];
+  const exchangeRate = settings.exchangeRate;
+  const productCostCny = Number(product.costCny) || 0;
+  const productCostLocal = exchangeRate > 0 ? productCostCny / exchangeRate : 0;
+  const firstLegCostCny = settings.firstLegCostPerKgCny * fee.weightKg;
+  const firstLegCost = exchangeRate > 0 ? firstLegCostCny / exchangeRate : 0;
+  const baseReturnProcessingFee = calculateReturnProcessingFee(fee.sizeTier, fee.shippingWeight);
+  const returnFeeBeforeBenefit = settings.returnFeeThresholdEnabled ? 0 : baseReturnProcessingFee * settings.returnRate;
+  const storageFee = fee.storageFee;
+  const referralBenefitRate = settings.newSellerBenefitPeriod ? 0.10 : 0;
+  const inboundBenefitCredit = settings.newSellerBenefitPeriod ? fee.inboundFee : 0;
+  const returnBenefitCredit = settings.newSellerBenefitPeriod ? returnFeeBeforeBenefit : 0;
+  const storageBenefitCredit = settings.newSellerBenefitPeriod ? storageFee : 0;
+  const fixedBaseCostBeforeBenefits = productCostLocal + firstLegCost + fee.total + fee.inboundFee + returnFeeBeforeBenefit + storageFee;
+  const fixedBaseCostAfterBenefits = fixedBaseCostBeforeBenefits - inboundBenefitCredit - returnBenefitCredit - storageBenefitCredit;
+  const effectiveReferralRate = Math.max(params.referralRate - referralBenefitRate, 0);
+  const variableRate = effectiveReferralRate + settings.advertisingRate;
+  const breakEvenPrice = variableRate < 1 ? fixedBaseCostAfterBenefits / (1 - variableRate) : 0;
+  const targetPriceDenominator = 1 - variableRate - settings.targetMarginRate;
+  const targetProfitPrice = targetPriceDenominator > 0 ? fixedBaseCostAfterBenefits / targetPriceDenominator : 0;
+  const parsedCompetitorPrices = pricesFromText(product.competitorPricing);
+  const parsedLow = parsedCompetitorPrices.length ? Math.min(...parsedCompetitorPrices) : 0;
+  const parsedHigh = parsedCompetitorPrices.length ? Math.max(...parsedCompetitorPrices) : 0;
+  const competitorMinInput = Number(product.competitorMinPrice) || parsedLow;
+  const competitorMaxInput = Number(product.competitorMaxPrice) || parsedHigh;
+  const competitorLow = Math.min(competitorMinInput, competitorMaxInput);
+  const competitorHigh = Math.max(competitorMinInput, competitorMaxInput);
+  const competitorAvg = Number(product.competitorAvgPrice) || (competitorLow && competitorHigh ? (competitorLow + competitorHigh) / 2 : 0);
+  const recommendedPrice = competitorHigh > 0
+    ? Math.min(Math.max(targetProfitPrice, competitorLow), competitorHigh)
+    : targetProfitPrice;
+  const recommendedPriceNote = competitorHigh <= 0
+    ? "未输入竞品区间，使用目标利润价。"
+    : targetProfitPrice < competitorLow
+      ? "目标利润价低于竞品区间，推荐贴近竞品最低价。"
+      : targetProfitPrice > competitorHigh
+        ? "目标利润价高于竞品区间，推荐先按竞品最高价评估空间。"
+        : "目标利润价落在竞品区间内。";
+  const variableFeesAtPrice = (price) => {
+    const baseReferralFee = Math.max(price * params.referralRate, params.minFee);
+    const benefitCredit = settings.newSellerBenefitPeriod ? Math.min(baseReferralFee, price * referralBenefitRate) : 0;
+    const referral = baseReferralFee - benefitCredit;
+    const advertising = price * settings.advertisingRate;
+    return {
+      baseReferralFee,
+      benefitCredit,
+      referral,
+      advertising,
+      total: referral + advertising,
+    };
+  };
+  const taxRefundCny = productCostCny * 0.13;
+  const taxRefundUsd = exchangeRate > 0 ? taxRefundCny / exchangeRate : 0;
+  const priceScenarios = [
+    ["保本价", breakEvenPrice],
+    ["目标利润价", targetProfitPrice],
+    ["推荐售价", recommendedPrice],
+    ["竞品均价", competitorAvg],
+    ["竞品下限", competitorLow],
+    ["竞品上限", competitorHigh],
+  ]
+    .filter(([, price]) => price > 0)
+    .map(([label, price]) => ({ label, ...profitAtPrice(price, { fixedBaseCostAfterBenefits, variableFeesAtPrice }) }));
+
+  return {
+    product,
+    category,
+    fee,
+    productCostLocal,
+    firstLegCostCny,
+    firstLegCost,
+    baseReturnProcessingFee,
+    returnFeeBeforeBenefit,
+    storageFee,
+    inboundBenefitCredit,
+    returnBenefitCredit,
+    storageBenefitCredit,
+    totalBenefitCredit: inboundBenefitCredit + returnBenefitCredit + storageBenefitCredit,
+    fixedBaseCostBeforeBenefits,
+    fixedBaseCostAfterBenefits,
+    breakEvenPrice,
+    targetProfitPrice,
+    recommendedPrice,
+    recommendedPriceNote,
+    recommendedProfit: profitAtPrice(recommendedPrice, { fixedBaseCostAfterBenefits, variableFeesAtPrice }),
+    breakEvenProfit: profitAtPrice(breakEvenPrice, { fixedBaseCostAfterBenefits, variableFeesAtPrice }),
+    targetProfit: profitAtPrice(targetProfitPrice, { fixedBaseCostAfterBenefits, variableFeesAtPrice }),
+    competitorLow,
+    competitorHigh,
+    competitorAvg,
+    priceScenarios,
+    taxRefundCny,
+    taxRefundUsd,
+    settings,
+  };
+}
+
+function renderScenarioTable(scenarios) {
+  return `
+    <div class="scenario-table">
+      <div class="scenario-head"><span>价格点</span><span>售价</span><span>佣金</span><span>广告费</span><span>利润</span><span>利润率</span></div>
+      ${scenarios.map((row) => `
+        <div>
+          <span>${escapeHtml(row.label)}</span>
+          <strong>${fmtMoney(row.price)}</strong>
+          <span>${renderBenefitValue(row.variable.baseReferralFee, row.variable.benefitCredit, row.variable.benefitCredit > 0)}</span>
+          <span>${fmtMoney(row.variable.advertising)}</span>
+          <strong class="${row.profit < 0 ? "loss-text" : "profit-text"}">${fmtMoney(row.profit)}</strong>
+          <span>${fmtPct(row.margin)}</span>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderSkuItem(item, index, openFirst) {
+  const product = item.product;
+  const openAttr = openFirst ? " open" : "";
+  return `
+    <details class="sku-item"${openAttr}>
+      <summary>
+        <span>
+          <strong>${escapeHtml(product.sku || `SKU-${index + 1}`)}</strong>
+          <em>${escapeHtml(product.originalSku || product.name || "未命名产品")} · ${escapeHtml(product.category || "未分类")}</em>
+        </span>
+        <span>${item.fee.tierLabel}</span>
+        <span>推荐 ${fmtMoney(item.recommendedPrice)}</span>
+        <span class="${item.recommendedProfit.profit < 0 ? "loss-text" : "profit-text"}">${fmtMoney(item.recommendedProfit.profit)}</span>
+      </summary>
+      <div class="sku-detail">
+        <div class="sku-kpis">
+          <div><span>保本价</span><strong>${fmtMoney(item.breakEvenPrice)}</strong><small>利润 ${fmtMoney(item.breakEvenProfit.profit)}</small></div>
+          <div><span>目标利润价</span><strong>${fmtMoney(item.targetProfitPrice)}</strong><small>利润 ${fmtMoney(item.targetProfit.profit)}</small></div>
+          <div><span>推荐售价</span><strong>${fmtMoney(item.recommendedPrice)}</strong><small>利润 ${fmtMoney(item.recommendedProfit.profit)}</small></div>
+          <div><span>竞品区间</span><strong>${fmtMoney(item.competitorLow)} - ${fmtMoney(item.competitorHigh)}</strong><small>${item.recommendedPriceNote}</small></div>
+        </div>
+        <div class="pricing-grid sku-grid">
+          <section>
+            <h3>所有成本</h3>
+            <div class="breakdown-rows compact-rows">
+              <div class="breakdown-row"><span>产品成本</span><span class="leader"></span><strong>${fmtMoney(item.productCostLocal)}</strong></div>
+              <div class="breakdown-row"><span>头程费用</span><span class="leader"></span><strong>${fmtMoney(item.firstLegCost)}</strong></div>
+              <div class="breakdown-row"><span>亚马逊配送费</span><span class="leader"></span><strong>${fmtMoney(item.fee.total)}</strong></div>
+              <div class="breakdown-row"><span>入库配置费</span><span class="leader"></span><strong>${renderBenefitValue(item.fee.inboundFee, item.inboundBenefitCredit, item.settings.newSellerBenefitPeriod)}</strong></div>
+              <div class="breakdown-row"><span>退货处理费</span><span class="leader"></span><strong>${renderBenefitValue(item.returnFeeBeforeBenefit, item.returnBenefitCredit, item.settings.newSellerBenefitPeriod)}</strong></div>
+              <div class="breakdown-row"><span>月度仓储费</span><span class="leader"></span><strong>${renderBenefitValue(item.storageFee, item.storageBenefitCredit, item.settings.newSellerBenefitPeriod)}</strong></div>
+              <div class="breakdown-row total"><span>基础成本合计</span><span class="leader"></span><strong>${fmtMoney(item.fixedBaseCostAfterBenefits)}</strong></div>
+            </div>
+          </section>
+          <section>
+            <h3>不同价格下佣金和广告费</h3>
+            ${renderScenarioTable(item.priceScenarios)}
+          </section>
+          <section>
+            <h3>可享受的福利抵扣</h3>
+            <div class="breakdown-rows compact-rows">
+              <div class="breakdown-row"><span>佣金抵扣按售价</span><span class="leader"></span><strong>${item.settings.newSellerBenefitPeriod ? "售价 x 10%" : "$0.00"}</strong></div>
+              <div class="breakdown-row"><span>入库配置费抵扣</span><span class="leader"></span><strong>${fmtMoney(item.inboundBenefitCredit)}</strong></div>
+              <div class="breakdown-row"><span>退货处理费抵扣</span><span class="leader"></span><strong>${fmtMoney(item.returnBenefitCredit)}</strong></div>
+              <div class="breakdown-row"><span>月度仓储费抵扣</span><span class="leader"></span><strong>${fmtMoney(item.storageBenefitCredit)}</strong></div>
+              <div class="breakdown-row total"><span>固定福利抵扣合计</span><span class="leader"></span><strong>${fmtMoney(item.totalBenefitCredit)}</strong></div>
+            </div>
+          </section>
+          <section>
+            <h3>退税额外收益</h3>
+            <div class="breakdown-rows compact-rows">
+              <div class="breakdown-row"><span>退税收益（成本 x 13%）</span><span class="leader"></span><strong>${fmtCny(item.taxRefundCny)} / ${fmtMoney(item.taxRefundUsd)}</strong></div>
+              <div class="breakdown-row"><span>产品尺寸</span><span class="leader"></span><strong>${Number(product.lengthCm || 0)} x ${Number(product.widthCm || 0)} x ${Number(product.heightCm || 0)} cm</strong></div>
+              <div class="breakdown-row"><span>包装重量</span><span class="leader"></span><strong>${Number(product.weightKg || 0).toFixed(2)} kg</strong></div>
+              <div class="breakdown-row"><span>计费重量</span><span class="leader"></span><strong>${item.fee.shippingWeightKg.toFixed(2)} kg</strong></div>
+              <div class="breakdown-row"><span>Part/No</span><span class="leader"></span><strong>${escapeHtml(product.sku || "")}</strong></div>
+              <div class="breakdown-row"><span>Original SKU</span><span class="leader"></span><strong>${escapeHtml(product.originalSku || "")}</strong></div>
+              <div class="breakdown-row"><span>类目</span><span class="leader"></span><strong>${escapeHtml(product.category || "")}</strong></div>
+              <div class="breakdown-row"><span>竞品定价</span><span class="leader"></span><strong>${escapeHtml(product.competitorPricing || "")}</strong></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </details>
+  `;
+}
+
+function renderPortfolio() {
+  const settings = getPortfolioSettings();
+  const analyses = state.portfolioProducts.map((product) => calculateSkuPricing(product, settings));
+  const groups = analyses.reduce((acc, item) => {
+    const category = majorCategory(item.product.category);
+    if (!acc.has(category)) acc.set(category, []);
+    acc.get(category).push(item);
+    return acc;
+  }, new Map());
+  $("#portfolioSummary").textContent = `${analyses.length} 个 SKU / 全局目标利润率 ${fmtPct(settings.targetMarginRate)} / 广告费率 ${fmtPct(settings.advertisingRate)}`;
+
+  $("#portfolioCategorySummary").innerHTML = Array.from(groups.entries()).map(([category, items]) => {
+    const subCategories = [...new Set(items.map((item) => item.product.category || "未分类"))];
+    return `
+      <div class="category-card">
+        <span>类目</span>
+        <strong>${escapeHtml(category)}</strong>
+        <small>${items.length} 个 SKU / ${subCategories.map(escapeHtml).join("、")}</small>
+      </div>
+    `;
+  }).join("");
+
+  let itemIndex = 0;
+  $("#portfolioSkuList").innerHTML = Array.from(groups.entries()).map(([category, items]) => {
+    const list = items.map((item) => renderSkuItem(item, itemIndex++, itemIndex === 1)).join("");
+    return `
+      <section class="category-group">
+        <div class="category-group-title">
+          <h2>${escapeHtml(category)}</h2>
+          <span>${items.length} 个 SKU</span>
+        </div>
+        ${list}
+      </section>
+    `;
+  }).join("");
+}
+
+function applyPortfolioProducts() {
+  const status = $("#portfolioDataStatus");
+  try {
+    const parsed = JSON.parse($("#portfolioProductsInput").value);
+    if (!Array.isArray(parsed)) throw new Error("产品数据必须是 JSON 数组");
+    state.portfolioProducts = parsed;
+    status.textContent = `已应用 ${parsed.length} 个 SKU。`;
+    renderPortfolio();
+  } catch (error) {
+    status.textContent = `产品数据格式有误：${error.message}`;
+  }
+}
+
 async function refreshExchangeRate() {
   const status = $("#exchangeRateStatus");
   const button = $("#refreshExchangeRate");
@@ -807,8 +1170,10 @@ async function refreshExchangeRate() {
     if (!cnyRate) throw new Error("CNY rate missing");
 
     $("#exchangeRate").value = Number(cnyRate).toFixed(4);
+    $("#portfolioExchangeRate").value = Number(cnyRate).toFixed(4);
     status.textContent = `已更新：1 USD = ${Number(cnyRate).toFixed(4)} CNY`;
     renderProfit();
+    renderPortfolio();
   } catch (error) {
     status.textContent = "实时汇率获取失败，当前使用手动输入值。";
   } finally {
@@ -824,6 +1189,7 @@ function setView(view) {
   $("#pageBadge").textContent = {
     fees: "费用计算器",
     profit: "利润计算器",
+    portfolio: "全产品定价分析",
     guide: "使用说明",
   }[view];
   const topbar = $(".topbar");
@@ -850,13 +1216,20 @@ function bindEvents() {
     el.addEventListener("input", renderProfit);
     el.addEventListener("change", renderProfit);
   });
+  $$("#portfolioForm input, #portfolioForm select").forEach((el) => {
+    el.addEventListener("input", renderPortfolio);
+    el.addEventListener("change", renderPortfolio);
+  });
+  $("#applyPortfolioProducts").addEventListener("click", applyPortfolioProducts);
   $("#refreshExchangeRate").addEventListener("click", refreshExchangeRate);
 }
 
 function init() {
   bindEvents();
+  $("#portfolioProductsInput").value = JSON.stringify(state.portfolioProducts, null, 2);
   calculateFee();
   renderProfit();
+  renderPortfolio();
   refreshExchangeRate();
   setView("fees");
 }
