@@ -208,7 +208,8 @@ label.wide,
 }
 
 input,
-select {
+select,
+textarea {
   width: 100%;
   min-height: 42px;
   border: 4px solid var(--line);
@@ -217,6 +218,14 @@ select {
   padding: 8px 10px;
   font: inherit;
   font-weight: 800;
+}
+
+textarea {
+  min-height: 180px;
+  resize: vertical;
+  line-height: 1.45;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
 }
 
 .check {
@@ -505,6 +514,216 @@ select {
   padding-bottom: 8px;
 }
 
+.data-box {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 4px solid var(--line);
+}
+
+.data-box h2 {
+  margin-bottom: 0;
+}
+
+.data-box .secondary-action {
+  width: 100%;
+}
+
+.category-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.category-card {
+  display: grid;
+  gap: 8px;
+  min-height: 92px;
+  align-content: center;
+  border: 4px solid var(--line);
+  background: var(--accent);
+  padding: 14px 16px;
+  box-shadow: 4px 4px 0 var(--line);
+}
+
+.category-card span,
+.sku-item summary em,
+.sku-kpis span {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 900;
+  color: #505050;
+}
+
+.category-card strong {
+  font-size: 26px;
+}
+
+.category-card small {
+  color: var(--ink);
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.sku-accordion {
+  display: grid;
+  gap: 20px;
+}
+
+.category-group {
+  display: grid;
+  gap: 14px;
+}
+
+.category-group-title {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border: 4px solid var(--line);
+  background: #050505;
+  color: white;
+  box-shadow: 4px 4px 0 var(--line);
+}
+
+.category-group-title h2 {
+  margin: 0;
+}
+
+.category-group-title span {
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.sku-item {
+  border: 4px solid var(--line);
+  background: var(--panel);
+  box-shadow: 5px 5px 0 var(--line);
+}
+
+.sku-item summary {
+  display: grid;
+  grid-template-columns: 32px minmax(220px, 1fr) minmax(120px, 160px) minmax(120px, 160px) minmax(100px, 140px);
+  gap: 12px;
+  align-items: center;
+  min-height: 72px;
+  padding: 14px 18px;
+  background: white;
+  border-bottom: 0;
+  cursor: pointer;
+  font-weight: 900;
+  list-style: none;
+}
+
+.sku-item[open] summary {
+  border-bottom: 4px solid var(--line);
+  background: var(--accent);
+}
+
+.sku-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.sku-item summary::before {
+  content: "+";
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 3px solid var(--line);
+  background: var(--mint);
+  box-shadow: 2px 2px 0 var(--line);
+}
+
+.sku-item[open] summary::before {
+  content: "-";
+}
+
+.sku-item summary > span:first-child {
+  display: grid;
+  gap: 6px;
+  align-items: center;
+}
+
+.sku-item summary > span:first-child strong,
+.sku-item summary > span:first-child em {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.sku-item summary > span:first-child::before {
+  display: none;
+}
+
+.sku-detail {
+  padding: 18px;
+  background: white;
+}
+
+.sku-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.sku-kpis > div {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  min-height: 112px;
+  border: 3px solid var(--line);
+  background: #fff7c0;
+  padding: 12px;
+}
+
+.sku-kpis strong {
+  font-size: 24px;
+  overflow-wrap: anywhere;
+}
+
+.sku-kpis small {
+  color: var(--ink);
+}
+
+.sku-grid {
+  padding: 0;
+  grid-template-columns: 1fr 1.35fr;
+}
+
+.scenario-table {
+  display: grid;
+  background: white;
+}
+
+.scenario-table > div {
+  display: grid;
+  grid-template-columns: minmax(72px, 1fr) repeat(5, minmax(72px, 1fr));
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border-top: 2px solid var(--line);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.scenario-table .scenario-head {
+  border-top: 0;
+  background: #f7f7f7;
+  font-weight: 900;
+}
+
+.profit-text {
+  color: var(--green);
+}
+
+.loss-text {
+  color: var(--danger);
+}
+
 .guide-view.is-active {
   display: block;
 }
@@ -597,8 +816,23 @@ select {
   .pricing-hero,
   .mini-grid,
   .info-grid,
-  .pricing-grid {
+  .pricing-grid,
+  .category-summary,
+  .sku-kpis,
+  .sku-grid {
     grid-template-columns: 1fr;
+  }
+
+  .sku-item summary {
+    grid-template-columns: 1fr;
+  }
+
+  .scenario-table {
+    overflow-x: auto;
+  }
+
+  .scenario-table > div {
+    min-width: 680px;
   }
 
   .hero-result {

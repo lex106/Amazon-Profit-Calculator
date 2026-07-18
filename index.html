@@ -22,6 +22,7 @@
       <nav class="nav" id="siteNav" aria-label="工具导航">
         <button class="nav-link is-active" type="button" data-view="fees">费用计算器</button>
         <button class="nav-link" type="button" data-view="profit">利润计算器</button>
+        <button class="nav-link" type="button" data-view="portfolio">全产品定价分析</button>
         <button class="nav-link" type="button" data-view="guide">使用说明</button>
         <span class="note-logo">US Only</span>
       </nav>
@@ -348,6 +349,92 @@
               <p id="returnRuleText">退货处理费始终作为费用项展示；按单次费用 × 退货率摊到每件。原始规则中，汽车和户外动力设备退货率阈值为 9.1%，轮胎为 8.7%，月发货少于 25 件不计费；当前利润页中，勾选开关时退货处理费按 0 计，不勾选时按摊销值计入。</p>
             </article>
           </div>
+        </section>
+      </section>
+
+      <section class="view" id="portfolioView" aria-labelledby="portfolioTitle">
+        <aside class="side-panel">
+          <div class="section-label">Global Pricing</div>
+          <h1 id="portfolioTitle">全产品定价分析</h1>
+          <p class="muted">以下选项全局生效，所有 SKU 会按同一套费用、福利和目标利润率重算。</p>
+
+          <form class="field-grid" id="portfolioForm">
+            <label class="wide">
+              <span>头程费用 ¥/kg</span>
+              <input id="portfolioFirstLegCostPerKgCny" type="number" min="0" step="0.01" value="6.7" />
+            </label>
+            <label class="wide">
+              <span>广告费率 %</span>
+              <input id="portfolioAdvertisingRate" type="number" min="0" step="0.01" value="8" />
+            </label>
+            <label class="wide">
+              <span>目标利润率 %</span>
+              <input id="portfolioTargetMarginRate" type="number" min="0" max="95" step="0.01" value="20" />
+            </label>
+            <label class="wide">
+              <span>美元汇率 CNY/USD</span>
+              <input id="portfolioExchangeRate" type="number" min="0" step="0.0001" value="7.18" />
+            </label>
+            <label class="wide">
+              <span>退货率 %</span>
+              <input id="portfolioReturnRate" type="number" min="0" step="0.01" value="6" />
+            </label>
+            <label class="wide">
+              <span>配送季节</span>
+              <select id="portfolioSeason">
+                <option value="nonPeak">非旺季</option>
+                <option value="peak">旺季 2026-10-15 至 2027-01-14</option>
+              </select>
+            </label>
+            <label class="wide">
+              <span>入库方案 / 发往地点数</span>
+              <select id="portfolioInboundPlan">
+                <option value="single">单点入仓 / 1 个地点</option>
+                <option value="partial">部分货件拆分 / 2-3 个地点</option>
+                <option value="optimized">亚马逊优化拆分 / 5 个或更多地点</option>
+              </select>
+            </label>
+            <label class="check wide">
+              <input id="portfolioFuelSurcharge" type="checkbox" checked />
+              <span>包含 3.5% 燃油和物流附加费</span>
+            </label>
+            <label class="check wide">
+              <input id="portfolioSippCertified" type="checkbox" checked />
+              <span>SIPP 自有包装认证</span>
+            </label>
+            <label class="check wide">
+              <input id="portfolioNewSelectionBenefit" type="checkbox" />
+              <span>是否新品入仓优惠</span>
+            </label>
+            <label class="check wide">
+              <input id="portfolioNewSellerBenefitPeriod" type="checkbox" checked />
+              <span>是否新卖家福利期</span>
+            </label>
+            <label class="check wide">
+              <input id="portfolioReturnFeeThresholdEnabled" type="checkbox" />
+              <span>是否月发货少于 25 件</span>
+            </label>
+          </form>
+
+          <div class="data-box">
+            <h2>产品数据</h2>
+            <p class="muted">可粘贴 JSON 数组；字段支持 sku、name、category、costCny、lengthCm、widthCm、heightCm、weightKg、competitorAvgPrice、competitorMinPrice、competitorMaxPrice。</p>
+            <textarea id="portfolioProductsInput" rows="12"></textarea>
+            <button class="secondary-action" id="applyPortfolioProducts" type="button">应用产品数据</button>
+            <small id="portfolioDataStatus">已加载示例数据。</small>
+          </div>
+        </aside>
+
+        <section class="content-panel">
+          <div class="profit-heading">
+            <p>Portfolio Pricing</p>
+            <h1>SKU 定价分析</h1>
+            <span id="portfolioSummary">等待产品数据</span>
+          </div>
+
+          <div class="category-summary" id="portfolioCategorySummary"></div>
+
+          <div class="sku-accordion" id="portfolioSkuList"></div>
         </section>
       </section>
 
